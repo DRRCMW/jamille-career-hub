@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jamille Tinsley – Career Hub</title>
-    <meta name="description" content="Jamille Tinsley's personal career dashboard — Salesforce Admin & Notary opportunities, application tracker, and interview prep." />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C9A84C'/><text y='.9em' font-size='70' x='12' fill='%23070E17' font-weight='bold'>JT</text></svg>" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+{
+    "name": "jamille-career-hub",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+          "dev": "vite",
+          "build": "vite build",
+          "preview": "vite preview"
+    },
+    "dependencies": {
+          "react": "^18.2.0",
+          "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+          "@vitejs/plugin-react": "^4.2.1",
+          "vite": "^5.1.4"
+    }
+}
