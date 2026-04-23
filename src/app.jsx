@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, createContext, useContext } from "react";
 
-/* âââ RESPONSIVE CONTEXT âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ RESPONSIVE CONTEXT Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const Screen = createContext({ isMobile:false, isTablet:false, isDesktop:true });
 const useScreen = () => useContext(Screen);
 
@@ -14,7 +14,7 @@ function useWindowSize() {
   return w;
 }
 
-/* âââ FONTS + GLOBAL CSS âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ FONTS + GLOBAL CSS Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const Fonts = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
@@ -69,7 +69,7 @@ const Fonts = () => (
   `}</style>
 );
 
-/* âââ THEME âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ THEME Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const C = {
   bg:"#070E17", surface:"#0C1624", card:"#0F1D2E", cardHi:"#142335",
   border:"rgba(190,155,60,0.13)", borderHi:"rgba(190,155,60,0.32)",
@@ -78,7 +78,7 @@ const C = {
   blue:"#2680D4", green:"#28A068", red:"#B83232", amber:"#C87830", teal:"#1E8F8F",
 };
 
-/* âââ SEEDED SHUFFLE (deterministic by week) âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ SEEDED SHUFFLE (deterministic by week) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function seededShuffle(arr, seed) {
   const a = [...arr];
   let s = seed;
@@ -90,66 +90,66 @@ function seededShuffle(arr, seed) {
   return a;
 }
 
-/* âââ JOB POOL: 30 SF JOBS âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ JOB POOL: 30 SF JOBS Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const SF_POOL = [
-  { id:"sf01", company:"Veeva Systems",          logo:"V", title:"Part-Time Salesforce Administrator",       location:"Remote",                   salary:"$45â60/hr",  type:"Part-Time", tag:"salesforce", match:97, about:"Veeva Systems is the leading cloud-software provider for global life sciences. Their Commercial Cloud leverages Salesforce as the backbone of pharma & biotech CRM operations.", description:"Support Veeva's RevOps team on a part-time basis â user management, flow maintenance, and dashboard builds for their Commercial Cloud platform.", requirements:["ADM-201 Certified","Flow Builder proficiency","Excellent stakeholder communication"], niceToHave:["Health/Life Sciences experience","Veeva Vault or CRM familiarity"], applyUrl:"https://careers.veeva.com/", websiteUrl:"https://www.veeva.com" },
-  { id:"sf02", company:"Relay Payments",          logo:"R", title:"Salesforce Admin â Contract (20 hrs/wk)", location:"Remote",                   salary:"$50â70/hr",  type:"Contract",  tag:"salesforce", match:94, about:"Relay Payments is a high-growth fintech modernizing payments for the trucking industry. Their team of 300+ relies on Salesforce as the central revenue platform.", description:"Own Salesforce configuration, user management, and reporting for Relay's growing sales and ops teams. 6-month contract with strong renewal.", requirements:["4+ yrs Salesforce Admin","Sales Cloud & Flow","API integration experience"], niceToHave:["Zuora experience","Agile/Scrum background"], applyUrl:"https://relaypayments.com/careers", websiteUrl:"https://www.relaypayments.com" },
-  { id:"sf03", company:"Patients & Purpose",      logo:"P", title:"Salesforce Support Admin (Part-Time)",    location:"Hybrid â Philadelphia, PA", salary:"$38â50/hr",  type:"Part-Time", tag:"salesforce", match:91, about:"Patients & Purpose is a healthcare marketing agency. Their Philadelphia office uses Salesforce to manage client relationships and campaign pipelines.", description:"Support the SF org for a 150-person healthcare marketing agency â user management, Service Cloud cases, reports and dashboards.", requirements:["SF Admin Certified","Service Cloud experience","Strong Excel & data skills"], niceToHave:["Healthcare background","Pardot experience"], applyUrl:"https://www.patientsandpurpose.com/careers", websiteUrl:"https://www.patientsandpurpose.com" },
-  { id:"sf04", company:"Lev (Concentrix)",        logo:"L", title:"Freelance SF Admin â Client Projects",    location:"Remote",                   salary:"$60â80/hr",  type:"Freelance", tag:"salesforce", match:89, about:"Lev is one of the largest dedicated Salesforce consulting partners in the US, delivering transformation projects for enterprise clients.", description:"Project-based engagements for enterprise clients. Strong org-build and migration experience prioritized.", requirements:["ADM-201 Certified","Data migration experience","Client-facing consulting skills"], niceToHave:["Einstein Analytics","Pardot / Marketing Cloud"], applyUrl:"https://lev.com/careers", websiteUrl:"https://www.lev.com" },
-  { id:"sf05", company:"The Salvation Army ARC",  logo:"S", title:"Salesforce Nonprofit Admin (PT)",        location:"Hybrid â Philadelphia, PA", salary:"$35â48/hr",  type:"Part-Time", tag:"salesforce", match:86, about:"The Salvation Army ARC in greater Philadelphia uses Salesforce NPSP to manage donor relationships and program outcomes.", description:"15â20 hrs/week managing a Salesforce NPSP org for a mission-driven organization.", requirements:["SF Admin experience","Nonprofit/NPSP familiarity","Strong reporting skills"], niceToHave:["Volunteer Management module","Donor management experience"], applyUrl:"https://www.salvationarmyusa.org/usn/about/employment/", websiteUrl:"https://www.salvationarmyusa.org" },
-  { id:"sf06", company:"Comcast NBCUniversal",    logo:"C", title:"Salesforce Admin â Part-Time Flex",       location:"Philadelphia, PA (Hybrid)", salary:"$55â75/hr",  type:"Part-Time", tag:"salesforce", match:88, about:"Comcast's enterprise tech division operates one of the largest Salesforce deployments on the East Coast, supporting B2B technology products.", description:"Support ongoing Salesforce org initiatives within Comcast's B2B tech division â 15â25 hours per week across sprint-based feature work.", requirements:["5+ yrs Salesforce Admin","Enterprise org experience (200+ users)","Agile/Scrum"], niceToHave:["Einstein AI tools","Pardot","API/integration background"], applyUrl:"https://jobs.comcast.com", websiteUrl:"https://corporate.comcast.com" },
-  { id:"sf07", company:"Jefferson Health",        logo:"J", title:"Salesforce CRM Admin (Part-Time)",        location:"Philadelphia, PA",          salary:"$42â55/hr",  type:"Part-Time", tag:"salesforce", match:87, about:"Jefferson Health is a major academic medical center network in Philadelphia, using Salesforce Health Cloud to manage patient engagement and outreach.", description:"Administer the Salesforce Health Cloud org for Jefferson's patient engagement team. 20 hrs/week with flexible scheduling.", requirements:["SF Admin Certified","Health Cloud or Service Cloud experience","HIPAA awareness"], niceToHave:["Patient engagement experience","Pardot"], applyUrl:"https://careers.jefferson.edu", websiteUrl:"https://www.jefferson.edu" },
-  { id:"sf08", company:"Curative (Healthcare)",   logo:"Cu", title:"Salesforce Operations Admin",            location:"Remote",                   salary:"$48â65/hr",  type:"Contract",  tag:"salesforce", match:85, about:"Curative is a healthcare technology company focused on simplifying access to care. Their ops team relies on Salesforce to manage partner relationships and workflows.", description:"Support Salesforce configuration and operations for a fast-moving healthcare tech company. Contract role with full-time conversion potential.", requirements:["SF Admin Certified","Process automation (Flows)","Strong documentation skills"], niceToHave:["Healthcare tech exposure","Conga or DocuSign integration"], applyUrl:"https://curative.com/careers", websiteUrl:"https://curative.com" },
-  { id:"sf09", company:"Aramark",                 logo:"A", title:"Part-Time Salesforce Admin",              location:"Philadelphia, PA",          salary:"$40â52/hr",  type:"Part-Time", tag:"salesforce", match:83, about:"Aramark is a global food, facilities, and uniform services company headquartered in Philadelphia. Their enterprise Salesforce org supports a global sales operation.", description:"Support Aramark's enterprise SF org with user management, automation, and data quality tasks on a part-time basis.", requirements:["3+ yrs SF Admin","Data migration & governance","Strong stakeholder management"], niceToHave:["CPQ experience","Einstein reporting"], applyUrl:"https://www.aramark.com/careers", websiteUrl:"https://www.aramark.com" },
-  { id:"sf10", company:"Axonify",                 logo:"Ax", title:"Salesforce Admin â RevOps (PT)",         location:"Remote",                   salary:"$52â68/hr",  type:"Part-Time", tag:"salesforce", match:90, about:"Axonify is an employee enablement platform used by Fortune 500 companies. Their RevOps team runs a sophisticated Salesforce org to power sales, marketing, and CS.", description:"Join Axonify's RevOps team as a part-time SF admin â own automations, integrations, and executive reporting.", requirements:["ADM-201","Flow Builder","Salesforce Reports & Dashboards"], niceToHave:["Pardot or HubSpot integration","CPQ knowledge"], applyUrl:"https://axonify.com/careers", websiteUrl:"https://axonify.com" },
-  { id:"sf11", company:"Gopuff",                  logo:"G", title:"Salesforce Contractor â Sales Ops",       location:"Philadelphia, PA (Hybrid)", salary:"$55â72/hr",  type:"Contract",  tag:"salesforce", match:86, about:"Gopuff is an instant delivery platform headquartered in Philadelphia. Their Sales Ops team manages enterprise partner relationships in Salesforce.", description:"Short-term contract supporting Gopuff's enterprise sales org â new object builds, automation, and dashboard work.", requirements:["Salesforce Admin Certified","Sales Cloud expertise","Data integrity management"], niceToHave:["Integration with Slack or Tableau","Enterprise org experience"], applyUrl:"https://www.gopuff.com/go/careers", websiteUrl:"https://www.gopuff.com" },
-  { id:"sf12", company:"WSFS Bank",               logo:"W", title:"Salesforce Admin â Financial Services",   location:"Wilmington, DE (Hybrid)",   salary:"$45â58/hr",  type:"Part-Time", tag:"salesforce", match:82, about:"WSFS Bank is a leading regional bank in the Delaware Valley. Their retail and commercial banking teams use Salesforce Financial Services Cloud.", description:"Support Salesforce FSC administration for WSFS's relationship banking team. Part-time hybrid role.", requirements:["SF Admin experience","Financial Services Cloud a plus","Compliance mindset"], niceToHave:["Veeva or FSC certification","Banking industry background"], applyUrl:"https://www.wsfsbank.com/about/careers", websiteUrl:"https://www.wsfsbank.com" },
-  { id:"sf13", company:"Penn Medicine",           logo:"PM", title:"Salesforce CRM Support Admin",           location:"Philadelphia, PA",          salary:"$40â54/hr",  type:"Part-Time", tag:"salesforce", match:84, about:"Penn Medicine is one of the world's leading academic medical centers. Their CRM team uses Salesforce to manage physician outreach and referring provider relationships.", description:"Support Penn Medicine's Salesforce org with configuration, training, and reporting. Flexible 15â20 hrs/week schedule.", requirements:["SF Admin Certified","Service or Health Cloud","End-user training skills"], niceToHave:["Healthcare CRM experience","Strong Excel skills"], applyUrl:"https://www.pennmedicine.org/careers", websiteUrl:"https://www.pennmedicine.org" },
-  { id:"sf14", company:"Cloudingo / Validity",    logo:"Cl", title:"Implementation Consultant (PT)",         location:"Remote",                   salary:"$58â75/hr",  type:"Freelance", tag:"salesforce", match:87, about:"Validity helps Salesforce customers improve data quality with tools like Cloudingo and DemandTools. Their partner network supports data governance engagements.", description:"Help Validity's clients implement data quality tools in their Salesforce orgs. Flexible freelance engagement, 10â20 hrs/week.", requirements:["Salesforce Admin Certified","Data migration & deduplication expertise","Client communication skills"], niceToHave:["Cloudingo or DemandTools experience","Mass update experience"], applyUrl:"https://www.validity.com/company/careers/", websiteUrl:"https://www.validity.com" },
-  { id:"sf15", company:"FS Investments",          logo:"FS", title:"Salesforce Admin â Wealth Management",   location:"Philadelphia, PA",          salary:"$50â65/hr",  type:"Part-Time", tag:"salesforce", match:83, about:"FS Investments is an alternative investment manager headquartered in Philadelphia, using Salesforce to manage advisor and investor relationships.", description:"Support the Salesforce FSC org for a leading alternative investment firm. 15â20 hrs/week, collaborative team environment.", requirements:["SF Admin experience","Financial Services Cloud or Wealth Management","Strong reporting skills"], niceToHave:["Compliance/regulatory awareness","DocuSign integration"], applyUrl:"https://fsinvestments.com/fs-investments/our-firm/careers/", websiteUrl:"https://fsinvestments.com" },
-  { id:"sf16", company:"Publicis Health",         logo:"Ph", title:"Salesforce Admin (Part-Time Contract)",  location:"Remote",                   salary:"$48â62/hr",  type:"Contract",  tag:"salesforce", match:88, about:"Publicis Health is a global health marketing network. Their operations team manages Salesforce for CRM, project tracking, and partner reporting across agencies.", description:"Support Salesforce operations for a global health marketing group â automation, user management, and cross-team reporting.", requirements:["SF Admin Certified","Pardot or Marketing Cloud experience","Agency or media industry background a plus"], niceToHave:["Einstein Analytics","Multi-org experience"], applyUrl:"https://www.publicishealth.com/careers", websiteUrl:"https://www.publicishealth.com" },
-  { id:"sf17", company:"Azenta Life Sciences",    logo:"Az", title:"Salesforce CRM Admin (Flex PT)",         location:"Remote",                   salary:"$45â60/hr",  type:"Part-Time", tag:"salesforce", match:85, about:"Azenta Life Sciences provides genomics and sample management solutions globally. Their Salesforce org supports a worldwide sales and service operation.", description:"Flexible part-time admin role supporting Azenta's global Salesforce org â configuration, integrations, and analytics.", requirements:["ADM-201","Flow Builder","Cross-functional stakeholder management"], niceToHave:["Life sciences industry background","Five9 or telephony integration"], applyUrl:"https://www.azenta.com/careers", websiteUrl:"https://www.azenta.com" },
-  { id:"sf18", company:"Independence Blue Cross", logo:"IB", title:"Salesforce Admin â Member Services PT",  location:"Philadelphia, PA (Hybrid)", salary:"$50â65/hr",  type:"Part-Time", tag:"salesforce", match:86, about:"Independence Blue Cross is the Philadelphia area's leading health insurer. Their member services team uses Salesforce Service Cloud to manage member interactions at scale.", description:"Part-time Salesforce admin role supporting IBC's Service Cloud org â case management, automation, and workforce tools.", requirements:["SF Admin Certified","Service Cloud experience","Strong documentation habits"], niceToHave:["Health insurance or regulated industry experience","HIPAA compliance awareness"], applyUrl:"https://careers.ibx.com", websiteUrl:"https://www.ibx.com" },
-  { id:"sf19", company:"Firstup (SocialChorus)",  logo:"Fu", title:"Salesforce Admin â Growth Tech",         location:"Remote",                   salary:"$52â68/hr",  type:"Contract",  tag:"salesforce", match:89, about:"Firstup is an employee communications platform used by Fortune 500 companies. Their growing RevOps team manages a complex Salesforce environment.", description:"Contract Salesforce admin role for a SaaS company in hypergrowth mode â process automation, clean data architecture, and exec reporting.", requirements:["4+ yrs SF Admin","Flow automation","Data hygiene expertise"], niceToHave:["Salesforce CPQ","HubSpot migration experience"], applyUrl:"https://firstup.io/careers/", websiteUrl:"https://firstup.io" },
-  { id:"sf20", company:"Children's Hospital of Philadelphia", logo:"CH", title:"Salesforce Admin (PT Remote)", location:"Remote",               salary:"$42â55/hr",  type:"Part-Time", tag:"salesforce", match:84, about:"CHOP is one of the nation's top pediatric hospitals. Their advancement and outreach teams use Salesforce to manage donor and community relationships.", description:"Support CHOP's Salesforce org for the advancement team â 15â20 hrs/week, fully remote role with a meaningful mission.", requirements:["SF Admin experience","Nonprofit or healthcare Salesforce background","Strong reporting skills"], niceToHave:["NPSP experience","Conga or DocuSign"], applyUrl:"https://jobs.chop.edu", websiteUrl:"https://www.chop.edu" },
-  { id:"sf21", company:"Dun & Bradstreet",        logo:"D", title:"Salesforce Operations Admin (PT)",        location:"Remote",                   salary:"$50â65/hr",  type:"Part-Time", tag:"salesforce", match:85, about:"Dun & Bradstreet is a global data and analytics firm. Their sales operations team manages a large, multi-cloud Salesforce environment for enterprise sales workflows.", description:"Part-time ops admin supporting Salesforce configuration and process improvement for D&B's enterprise sales org.", requirements:["ADM-201","Multi-org experience","Sales Cloud proficiency"], niceToHave:["CPQ configuration","Data cloud integration"], applyUrl:"https://www.dnb.com/about-us/company/careers.html", websiteUrl:"https://www.dnb.com" },
-  { id:"sf22", company:"Ribbon Health",           logo:"Rh", title:"Salesforce Admin â Health Tech Startup",  location:"Remote",                  salary:"$55â72/hr",  type:"Freelance", tag:"salesforce", match:90, about:"Ribbon Health is a health tech company enabling provider data and network management. Their team needs experienced SF admins to scale their go-to-market infrastructure.", description:"Freelance SF admin supporting a Series B health tech startup â build scalable processes and support a fast-growing revenue team.", requirements:["SF Admin Certified","Startup or high-growth experience","Self-managed, async communication"], niceToHave:["HubSpot to Salesforce migration","Outreach or SalesLoft integration"], applyUrl:"https://ribbonhealth.com/careers/", websiteUrl:"https://ribbonhealth.com" },
-  { id:"sf23", company:"AmerisourceBergen (Cencora)", logo:"Am", title:"Salesforce Admin â Pharma PT",        location:"Conshohocken, PA (Hybrid)", salary:"$48â62/hr", type:"Part-Time", tag:"salesforce", match:83, about:"Cencora (formerly AmerisourceBergen) is a global healthcare company headquartered near Philadelphia. Their commercial team uses Salesforce to manage pharmaceutical distribution relationships.", description:"Support Salesforce administration for Cencora's commercial operations team, with a focus on reporting and data governance.", requirements:["SF Admin Certified","Large org experience","Compliance mindset"], niceToHave:["Healthcare or pharma background","Five9 or telephony"], applyUrl:"https://www.amerisourcebergen.com/careers", websiteUrl:"https://www.amerisourcebergen.com" },
-  { id:"sf24", company:"Rowan University",        logo:"Ru", title:"Salesforce CRM Admin (Higher Ed PT)",     location:"Glassboro, NJ (Hybrid)",   salary:"$38â48/hr",  type:"Part-Time", tag:"salesforce", match:80, about:"Rowan University uses Salesforce Education Cloud to manage student recruitment, advising, and alumni engagement across its growing campus network.", description:"Part-time Salesforce admin supporting Rowan's student success and advancement teams.", requirements:["SF Admin experience","Education Cloud or NPSP a plus","Strong end-user training skills"], niceToHave:["Higher education background","FormAssembly or similar"], applyUrl:"https://jobs.rowan.edu", websiteUrl:"https://www.rowan.edu" },
-  { id:"sf25", company:"Day & Zimmermann",        logo:"DZ", title:"Salesforce Admin â Defense/Gov Contractor", location:"Philadelphia, PA",      salary:"$45â58/hr",  type:"Part-Time", tag:"salesforce", match:81, about:"Day & Zimmermann is a family-owned defense and workforce solutions company headquartered in Philadelphia, using Salesforce to manage government contract relationships.", description:"Administer Salesforce CRM for a Philadelphia-based defense contractor â reporting, user management, and process improvement.", requirements:["SF Admin Certified","Government or enterprise org experience","Reliable and process-oriented"], niceToHave:["DocuSign or contract management integration","Data migration experience"], applyUrl:"https://www.dayzim.com/careers", websiteUrl:"https://www.dayzim.com" },
-  { id:"sf26", company:"Bentley Systems",         logo:"Bs", title:"Salesforce Admin â Infrastructure Tech",  location:"Remote / Exton, PA",       salary:"$50â65/hr",  type:"Part-Time", tag:"salesforce", match:85, about:"Bentley Systems is a global infrastructure engineering software company headquartered in Exton, PA. Their CRM team manages global enterprise sales in Salesforce.", description:"Support Bentley's global Salesforce org with configuration, automations, and multi-region reporting on a part-time basis.", requirements:["ADM-201","International org experience","Flow Builder proficiency"], niceToHave:["CPQ or contract management","Multi-language org experience"], applyUrl:"https://www.bentley.com/company/careers/", websiteUrl:"https://www.bentley.com" },
-  { id:"sf27", company:"Chariot Solutions",       logo:"Cs", title:"Salesforce Consultant (Flex Contract)",   location:"Horsham, PA",              salary:"$55â70/hr",  type:"Freelance", tag:"salesforce", match:87, about:"Chariot Solutions is a Philadelphia-area technology consulting firm delivering Salesforce and custom software solutions for clients across industries.", description:"Flexible Salesforce consulting engagements with Chariot's growing CRM practice â client work in financial services, healthcare, and nonprofits.", requirements:["3+ yrs SF Admin or Developer","Client-facing skills","Self-starter in a consulting environment"], niceToHave:["Multiple Salesforce certifications","Project management experience"], applyUrl:"https://chariotsolutions.com/careers/", websiteUrl:"https://chariotsolutions.com" },
-  { id:"sf28", company:"Radian Group",            logo:"Ra", title:"Salesforce Admin â Mortgage Tech",        location:"Philadelphia, PA (Hybrid)", salary:"$48â60/hr",  type:"Part-Time", tag:"salesforce", match:83, about:"Radian Group is a leading mortgage insurance and real estate services company in Philadelphia. Salesforce supports their B2B lender relationship management.", description:"Part-time SF admin supporting Radian's lender relations team â user management, dashboards, and automation improvements.", requirements:["SF Admin experience","Financial services or mortgage background a plus","Attention to compliance requirements"], niceToHave:["Financial Services Cloud","DocuSign integration"], applyUrl:"https://radian.com/about-radian/careers", websiteUrl:"https://radian.com" },
-  { id:"sf29", company:"Catalant Technologies",   logo:"Ca", title:"Salesforce RevOps Admin (PT Remote)",     location:"Remote",                   salary:"$52â68/hr",  type:"Contract",  tag:"salesforce", match:88, about:"Catalant connects companies with business experts for project work. Their RevOps team uses Salesforce to manage enterprise client and expert workflows.", description:"Contract role supporting Catalant's RevOps Salesforce org â automation, data architecture, and executive reporting.", requirements:["ADM-201","Flow Builder & automation","RevOps mindset"], niceToHave:["Outreach or SalesLoft integration","CPQ experience"], applyUrl:"https://catalant.com/careers/", websiteUrl:"https://catalant.com" },
-  { id:"sf30", company:"Siemens Healthineers",    logo:"Si", title:"Salesforce Admin â Medical Devices PT",   location:"Malvern, PA (Hybrid)",     salary:"$50â66/hr",  type:"Part-Time", tag:"salesforce", match:84, about:"Siemens Healthineers is a global medical technology company with significant US operations in Malvern, PA. Their commercial team manages service and sales in Salesforce.", description:"Support Salesforce for a medical devices commercial team â field service, case management, and reporting.", requirements:["SF Admin Certified","Service Cloud or Field Service experience","Healthcare/medical device preferred"], niceToHave:["Field Service Lightning","SAP integration awareness"], applyUrl:"https://www.siemens-healthineers.com/en-us/careers", websiteUrl:"https://www.siemens-healthineers.com" },
+  { id:"sf01", company:"Veeva Systems",          logo:"V", title:"Part-Time Salesforce Administrator",       location:"Remote",                   salary:"$45Ã¢ÂÂ60/hr",  type:"Part-Time", tag:"salesforce", match:97, about:"Veeva Systems is the leading cloud-software provider for global life sciences. Their Commercial Cloud leverages Salesforce as the backbone of pharma & biotech CRM operations.", description:"Support Veeva's RevOps team on a part-time basis Ã¢ÂÂ user management, flow maintenance, and dashboard builds for their Commercial Cloud platform.", requirements:["ADM-201 Certified","Flow Builder proficiency","Excellent stakeholder communication"], niceToHave:["Health/Life Sciences experience","Veeva Vault or CRM familiarity"], applyUrl:"https://careers.veeva.com/", websiteUrl:"https://www.veeva.com" },
+  { id:"sf02", company:"Relay Payments",          logo:"R", title:"Salesforce Admin Ã¢ÂÂ Contract (20 hrs/wk)", location:"Remote",                   salary:"$50Ã¢ÂÂ70/hr",  type:"Contract",  tag:"salesforce", match:94, about:"Relay Payments is a high-growth fintech modernizing payments for the trucking industry. Their team of 300+ relies on Salesforce as the central revenue platform.", description:"Own Salesforce configuration, user management, and reporting for Relay's growing sales and ops teams. 6-month contract with strong renewal.", requirements:["4+ yrs Salesforce Admin","Sales Cloud & Flow","API integration experience"], niceToHave:["Zuora experience","Agile/Scrum background"], applyUrl:"https://relaypayments.com/careers", websiteUrl:"https://www.relaypayments.com" },
+  { id:"sf03", company:"Patients & Purpose",      logo:"P", title:"Salesforce Support Admin (Part-Time)",    location:"Hybrid Ã¢ÂÂ Philadelphia, PA", salary:"$38Ã¢ÂÂ50/hr",  type:"Part-Time", tag:"salesforce", match:91, about:"Patients & Purpose is a healthcare marketing agency. Their Philadelphia office uses Salesforce to manage client relationships and campaign pipelines.", description:"Support the SF org for a 150-person healthcare marketing agency Ã¢ÂÂ user management, Service Cloud cases, reports and dashboards.", requirements:["SF Admin Certified","Service Cloud experience","Strong Excel & data skills"], niceToHave:["Healthcare background","Pardot experience"], applyUrl:"https://www.patientsandpurpose.com/careers", websiteUrl:"https://www.patientsandpurpose.com" },
+  { id:"sf04", company:"Lev (Concentrix)",        logo:"L", title:"Freelance SF Admin Ã¢ÂÂ Client Projects",    location:"Remote",                   salary:"$60Ã¢ÂÂ80/hr",  type:"Freelance", tag:"salesforce", match:89, about:"Lev is one of the largest dedicated Salesforce consulting partners in the US, delivering transformation projects for enterprise clients.", description:"Project-based engagements for enterprise clients. Strong org-build and migration experience prioritized.", requirements:["ADM-201 Certified","Data migration experience","Client-facing consulting skills"], niceToHave:["Einstein Analytics","Pardot / Marketing Cloud"], applyUrl:"https://lev.com/careers", websiteUrl:"https://www.lev.com" },
+  { id:"sf05", company:"The Salvation Army ARC",  logo:"S", title:"Salesforce Nonprofit Admin (PT)",        location:"Hybrid Ã¢ÂÂ Philadelphia, PA", salary:"$35Ã¢ÂÂ48/hr",  type:"Part-Time", tag:"salesforce", match:86, about:"The Salvation Army ARC in greater Philadelphia uses Salesforce NPSP to manage donor relationships and program outcomes.", description:"15Ã¢ÂÂ20 hrs/week managing a Salesforce NPSP org for a mission-driven organization.", requirements:["SF Admin experience","Nonprofit/NPSP familiarity","Strong reporting skills"], niceToHave:["Volunteer Management module","Donor management experience"], applyUrl:"https://www.salvationarmyusa.org/usn/about/employment/", websiteUrl:"https://www.salvationarmyusa.org" },
+  { id:"sf06", company:"Comcast NBCUniversal",    logo:"C", title:"Salesforce Admin Ã¢ÂÂ Part-Time Flex",       location:"Philadelphia, PA (Hybrid)", salary:"$55Ã¢ÂÂ75/hr",  type:"Part-Time", tag:"salesforce", match:88, about:"Comcast's enterprise tech division operates one of the largest Salesforce deployments on the East Coast, supporting B2B technology products.", description:"Support ongoing Salesforce org initiatives within Comcast's B2B tech division Ã¢ÂÂ 15Ã¢ÂÂ25 hours per week across sprint-based feature work.", requirements:["5+ yrs Salesforce Admin","Enterprise org experience (200+ users)","Agile/Scrum"], niceToHave:["Einstein AI tools","Pardot","API/integration background"], applyUrl:"https://jobs.comcast.com", websiteUrl:"https://corporate.comcast.com" },
+  { id:"sf07", company:"Jefferson Health",        logo:"J", title:"Salesforce CRM Admin (Part-Time)",        location:"Philadelphia, PA",          salary:"$42Ã¢ÂÂ55/hr",  type:"Part-Time", tag:"salesforce", match:87, about:"Jefferson Health is a major academic medical center network in Philadelphia, using Salesforce Health Cloud to manage patient engagement and outreach.", description:"Administer the Salesforce Health Cloud org for Jefferson's patient engagement team. 20 hrs/week with flexible scheduling.", requirements:["SF Admin Certified","Health Cloud or Service Cloud experience","HIPAA awareness"], niceToHave:["Patient engagement experience","Pardot"], applyUrl:"https://careers.jefferson.edu", websiteUrl:"https://www.jefferson.edu" },
+  { id:"sf08", company:"Curative (Healthcare)",   logo:"Cu", title:"Salesforce Operations Admin",            location:"Remote",                   salary:"$48Ã¢ÂÂ65/hr",  type:"Contract",  tag:"salesforce", match:85, about:"Curative is a healthcare technology company focused on simplifying access to care. Their ops team relies on Salesforce to manage partner relationships and workflows.", description:"Support Salesforce configuration and operations for a fast-moving healthcare tech company. Contract role with full-time conversion potential.", requirements:["SF Admin Certified","Process automation (Flows)","Strong documentation skills"], niceToHave:["Healthcare tech exposure","Conga or DocuSign integration"], applyUrl:"https://curative.com/careers", websiteUrl:"https://curative.com" },
+  { id:"sf09", company:"Aramark",                 logo:"A", title:"Part-Time Salesforce Admin",              location:"Philadelphia, PA",          salary:"$40Ã¢ÂÂ52/hr",  type:"Part-Time", tag:"salesforce", match:83, about:"Aramark is a global food, facilities, and uniform services company headquartered in Philadelphia. Their enterprise Salesforce org supports a global sales operation.", description:"Support Aramark's enterprise SF org with user management, automation, and data quality tasks on a part-time basis.", requirements:["3+ yrs SF Admin","Data migration & governance","Strong stakeholder management"], niceToHave:["CPQ experience","Einstein reporting"], applyUrl:"https://www.aramark.com/careers", websiteUrl:"https://www.aramark.com" },
+  { id:"sf10", company:"Axonify",                 logo:"Ax", title:"Salesforce Admin Ã¢ÂÂ RevOps (PT)",         location:"Remote",                   salary:"$52Ã¢ÂÂ68/hr",  type:"Part-Time", tag:"salesforce", match:90, about:"Axonify is an employee enablement platform used by Fortune 500 companies. Their RevOps team runs a sophisticated Salesforce org to power sales, marketing, and CS.", description:"Join Axonify's RevOps team as a part-time SF admin Ã¢ÂÂ own automations, integrations, and executive reporting.", requirements:["ADM-201","Flow Builder","Salesforce Reports & Dashboards"], niceToHave:["Pardot or HubSpot integration","CPQ knowledge"], applyUrl:"https://axonify.com/careers", websiteUrl:"https://axonify.com" },
+  { id:"sf11", company:"Gopuff",                  logo:"G", title:"Salesforce Contractor Ã¢ÂÂ Sales Ops",       location:"Philadelphia, PA (Hybrid)", salary:"$55Ã¢ÂÂ72/hr",  type:"Contract",  tag:"salesforce", match:86, about:"Gopuff is an instant delivery platform headquartered in Philadelphia. Their Sales Ops team manages enterprise partner relationships in Salesforce.", description:"Short-term contract supporting Gopuff's enterprise sales org Ã¢ÂÂ new object builds, automation, and dashboard work.", requirements:["Salesforce Admin Certified","Sales Cloud expertise","Data integrity management"], niceToHave:["Integration with Slack or Tableau","Enterprise org experience"], applyUrl:"https://www.gopuff.com/go/careers", websiteUrl:"https://www.gopuff.com" },
+  { id:"sf12", company:"WSFS Bank",               logo:"W", title:"Salesforce Admin Ã¢ÂÂ Financial Services",   location:"Wilmington, DE (Hybrid)",   salary:"$45Ã¢ÂÂ58/hr",  type:"Part-Time", tag:"salesforce", match:82, about:"WSFS Bank is a leading regional bank in the Delaware Valley. Their retail and commercial banking teams use Salesforce Financial Services Cloud.", description:"Support Salesforce FSC administration for WSFS's relationship banking team. Part-time hybrid role.", requirements:["SF Admin experience","Financial Services Cloud a plus","Compliance mindset"], niceToHave:["Veeva or FSC certification","Banking industry background"], applyUrl:"https://www.wsfsbank.com/about/careers", websiteUrl:"https://www.wsfsbank.com" },
+  { id:"sf13", company:"Penn Medicine",           logo:"PM", title:"Salesforce CRM Support Admin",           location:"Philadelphia, PA",          salary:"$40Ã¢ÂÂ54/hr",  type:"Part-Time", tag:"salesforce", match:84, about:"Penn Medicine is one of the world's leading academic medical centers. Their CRM team uses Salesforce to manage physician outreach and referring provider relationships.", description:"Support Penn Medicine's Salesforce org with configuration, training, and reporting. Flexible 15Ã¢ÂÂ20 hrs/week schedule.", requirements:["SF Admin Certified","Service or Health Cloud","End-user training skills"], niceToHave:["Healthcare CRM experience","Strong Excel skills"], applyUrl:"https://www.pennmedicine.org/careers", websiteUrl:"https://www.pennmedicine.org" },
+  { id:"sf14", company:"Cloudingo / Validity",    logo:"Cl", title:"Implementation Consultant (PT)",         location:"Remote",                   salary:"$58Ã¢ÂÂ75/hr",  type:"Freelance", tag:"salesforce", match:87, about:"Validity helps Salesforce customers improve data quality with tools like Cloudingo and DemandTools. Their partner network supports data governance engagements.", description:"Help Validity's clients implement data quality tools in their Salesforce orgs. Flexible freelance engagement, 10Ã¢ÂÂ20 hrs/week.", requirements:["Salesforce Admin Certified","Data migration & deduplication expertise","Client communication skills"], niceToHave:["Cloudingo or DemandTools experience","Mass update experience"], applyUrl:"https://www.validity.com/company/careers/", websiteUrl:"https://www.validity.com" },
+  { id:"sf15", company:"FS Investments",          logo:"FS", title:"Salesforce Admin Ã¢ÂÂ Wealth Management",   location:"Philadelphia, PA",          salary:"$50Ã¢ÂÂ65/hr",  type:"Part-Time", tag:"salesforce", match:83, about:"FS Investments is an alternative investment manager headquartered in Philadelphia, using Salesforce to manage advisor and investor relationships.", description:"Support the Salesforce FSC org for a leading alternative investment firm. 15Ã¢ÂÂ20 hrs/week, collaborative team environment.", requirements:["SF Admin experience","Financial Services Cloud or Wealth Management","Strong reporting skills"], niceToHave:["Compliance/regulatory awareness","DocuSign integration"], applyUrl:"https://fsinvestments.com/fs-investments/our-firm/careers/", websiteUrl:"https://fsinvestments.com" },
+  { id:"sf16", company:"Publicis Health",         logo:"Ph", title:"Salesforce Admin (Part-Time Contract)",  location:"Remote",                   salary:"$48Ã¢ÂÂ62/hr",  type:"Contract",  tag:"salesforce", match:88, about:"Publicis Health is a global health marketing network. Their operations team manages Salesforce for CRM, project tracking, and partner reporting across agencies.", description:"Support Salesforce operations for a global health marketing group Ã¢ÂÂ automation, user management, and cross-team reporting.", requirements:["SF Admin Certified","Pardot or Marketing Cloud experience","Agency or media industry background a plus"], niceToHave:["Einstein Analytics","Multi-org experience"], applyUrl:"https://www.publicishealth.com/careers", websiteUrl:"https://www.publicishealth.com" },
+  { id:"sf17", company:"Azenta Life Sciences",    logo:"Az", title:"Salesforce CRM Admin (Flex PT)",         location:"Remote",                   salary:"$45Ã¢ÂÂ60/hr",  type:"Part-Time", tag:"salesforce", match:85, about:"Azenta Life Sciences provides genomics and sample management solutions globally. Their Salesforce org supports a worldwide sales and service operation.", description:"Flexible part-time admin role supporting Azenta's global Salesforce org Ã¢ÂÂ configuration, integrations, and analytics.", requirements:["ADM-201","Flow Builder","Cross-functional stakeholder management"], niceToHave:["Life sciences industry background","Five9 or telephony integration"], applyUrl:"https://www.azenta.com/careers", websiteUrl:"https://www.azenta.com" },
+  { id:"sf18", company:"Independence Blue Cross", logo:"IB", title:"Salesforce Admin Ã¢ÂÂ Member Services PT",  location:"Philadelphia, PA (Hybrid)", salary:"$50Ã¢ÂÂ65/hr",  type:"Part-Time", tag:"salesforce", match:86, about:"Independence Blue Cross is the Philadelphia area's leading health insurer. Their member services team uses Salesforce Service Cloud to manage member interactions at scale.", description:"Part-time Salesforce admin role supporting IBC's Service Cloud org Ã¢ÂÂ case management, automation, and workforce tools.", requirements:["SF Admin Certified","Service Cloud experience","Strong documentation habits"], niceToHave:["Health insurance or regulated industry experience","HIPAA compliance awareness"], applyUrl:"https://careers.ibx.com", websiteUrl:"https://www.ibx.com" },
+  { id:"sf19", company:"Firstup (SocialChorus)",  logo:"Fu", title:"Salesforce Admin Ã¢ÂÂ Growth Tech",         location:"Remote",                   salary:"$52Ã¢ÂÂ68/hr",  type:"Contract",  tag:"salesforce", match:89, about:"Firstup is an employee communications platform used by Fortune 500 companies. Their growing RevOps team manages a complex Salesforce environment.", description:"Contract Salesforce admin role for a SaaS company in hypergrowth mode Ã¢ÂÂ process automation, clean data architecture, and exec reporting.", requirements:["4+ yrs SF Admin","Flow automation","Data hygiene expertise"], niceToHave:["Salesforce CPQ","HubSpot migration experience"], applyUrl:"https://firstup.io/careers/", websiteUrl:"https://firstup.io" },
+  { id:"sf20", company:"Children's Hospital of Philadelphia", logo:"CH", title:"Salesforce Admin (PT Remote)", location:"Remote",               salary:"$42Ã¢ÂÂ55/hr",  type:"Part-Time", tag:"salesforce", match:84, about:"CHOP is one of the nation's top pediatric hospitals. Their advancement and outreach teams use Salesforce to manage donor and community relationships.", description:"Support CHOP's Salesforce org for the advancement team Ã¢ÂÂ 15Ã¢ÂÂ20 hrs/week, fully remote role with a meaningful mission.", requirements:["SF Admin experience","Nonprofit or healthcare Salesforce background","Strong reporting skills"], niceToHave:["NPSP experience","Conga or DocuSign"], applyUrl:"https://jobs.chop.edu", websiteUrl:"https://www.chop.edu" },
+  { id:"sf21", company:"Dun & Bradstreet",        logo:"D", title:"Salesforce Operations Admin (PT)",        location:"Remote",                   salary:"$50Ã¢ÂÂ65/hr",  type:"Part-Time", tag:"salesforce", match:85, about:"Dun & Bradstreet is a global data and analytics firm. Their sales operations team manages a large, multi-cloud Salesforce environment for enterprise sales workflows.", description:"Part-time ops admin supporting Salesforce configuration and process improvement for D&B's enterprise sales org.", requirements:["ADM-201","Multi-org experience","Sales Cloud proficiency"], niceToHave:["CPQ configuration","Data cloud integration"], applyUrl:"https://www.dnb.com/about-us/company/careers.html", websiteUrl:"https://www.dnb.com" },
+  { id:"sf22", company:"Ribbon Health",           logo:"Rh", title:"Salesforce Admin Ã¢ÂÂ Health Tech Startup",  location:"Remote",                  salary:"$55Ã¢ÂÂ72/hr",  type:"Freelance", tag:"salesforce", match:90, about:"Ribbon Health is a health tech company enabling provider data and network management. Their team needs experienced SF admins to scale their go-to-market infrastructure.", description:"Freelance SF admin supporting a Series B health tech startup Ã¢ÂÂ build scalable processes and support a fast-growing revenue team.", requirements:["SF Admin Certified","Startup or high-growth experience","Self-managed, async communication"], niceToHave:["HubSpot to Salesforce migration","Outreach or SalesLoft integration"], applyUrl:"https://ribbonhealth.com/careers/", websiteUrl:"https://ribbonhealth.com" },
+  { id:"sf23", company:"AmerisourceBergen (Cencora)", logo:"Am", title:"Salesforce Admin Ã¢ÂÂ Pharma PT",        location:"Conshohocken, PA (Hybrid)", salary:"$48Ã¢ÂÂ62/hr", type:"Part-Time", tag:"salesforce", match:83, about:"Cencora (formerly AmerisourceBergen) is a global healthcare company headquartered near Philadelphia. Their commercial team uses Salesforce to manage pharmaceutical distribution relationships.", description:"Support Salesforce administration for Cencora's commercial operations team, with a focus on reporting and data governance.", requirements:["SF Admin Certified","Large org experience","Compliance mindset"], niceToHave:["Healthcare or pharma background","Five9 or telephony"], applyUrl:"https://www.amerisourcebergen.com/careers", websiteUrl:"https://www.amerisourcebergen.com" },
+  { id:"sf24", company:"Rowan University",        logo:"Ru", title:"Salesforce CRM Admin (Higher Ed PT)",     location:"Glassboro, NJ (Hybrid)",   salary:"$38Ã¢ÂÂ48/hr",  type:"Part-Time", tag:"salesforce", match:80, about:"Rowan University uses Salesforce Education Cloud to manage student recruitment, advising, and alumni engagement across its growing campus network.", description:"Part-time Salesforce admin supporting Rowan's student success and advancement teams.", requirements:["SF Admin experience","Education Cloud or NPSP a plus","Strong end-user training skills"], niceToHave:["Higher education background","FormAssembly or similar"], applyUrl:"https://jobs.rowan.edu", websiteUrl:"https://www.rowan.edu" },
+  { id:"sf25", company:"Day & Zimmermann",        logo:"DZ", title:"Salesforce Admin Ã¢ÂÂ Defense/Gov Contractor", location:"Philadelphia, PA",      salary:"$45Ã¢ÂÂ58/hr",  type:"Part-Time", tag:"salesforce", match:81, about:"Day & Zimmermann is a family-owned defense and workforce solutions company headquartered in Philadelphia, using Salesforce to manage government contract relationships.", description:"Administer Salesforce CRM for a Philadelphia-based defense contractor Ã¢ÂÂ reporting, user management, and process improvement.", requirements:["SF Admin Certified","Government or enterprise org experience","Reliable and process-oriented"], niceToHave:["DocuSign or contract management integration","Data migration experience"], applyUrl:"https://www.dayzim.com/careers", websiteUrl:"https://www.dayzim.com" },
+  { id:"sf26", company:"Bentley Systems",         logo:"Bs", title:"Salesforce Admin Ã¢ÂÂ Infrastructure Tech",  location:"Remote / Exton, PA",       salary:"$50Ã¢ÂÂ65/hr",  type:"Part-Time", tag:"salesforce", match:85, about:"Bentley Systems is a global infrastructure engineering software company headquartered in Exton, PA. Their CRM team manages global enterprise sales in Salesforce.", description:"Support Bentley's global Salesforce org with configuration, automations, and multi-region reporting on a part-time basis.", requirements:["ADM-201","International org experience","Flow Builder proficiency"], niceToHave:["CPQ or contract management","Multi-language org experience"], applyUrl:"https://www.bentley.com/company/careers/", websiteUrl:"https://www.bentley.com" },
+  { id:"sf27", company:"Chariot Solutions",       logo:"Cs", title:"Salesforce Consultant (Flex Contract)",   location:"Horsham, PA",              salary:"$55Ã¢ÂÂ70/hr",  type:"Freelance", tag:"salesforce", match:87, about:"Chariot Solutions is a Philadelphia-area technology consulting firm delivering Salesforce and custom software solutions for clients across industries.", description:"Flexible Salesforce consulting engagements with Chariot's growing CRM practice Ã¢ÂÂ client work in financial services, healthcare, and nonprofits.", requirements:["3+ yrs SF Admin or Developer","Client-facing skills","Self-starter in a consulting environment"], niceToHave:["Multiple Salesforce certifications","Project management experience"], applyUrl:"https://chariotsolutions.com/careers/", websiteUrl:"https://chariotsolutions.com" },
+  { id:"sf28", company:"Radian Group",            logo:"Ra", title:"Salesforce Admin Ã¢ÂÂ Mortgage Tech",        location:"Philadelphia, PA (Hybrid)", salary:"$48Ã¢ÂÂ60/hr",  type:"Part-Time", tag:"salesforce", match:83, about:"Radian Group is a leading mortgage insurance and real estate services company in Philadelphia. Salesforce supports their B2B lender relationship management.", description:"Part-time SF admin supporting Radian's lender relations team Ã¢ÂÂ user management, dashboards, and automation improvements.", requirements:["SF Admin experience","Financial services or mortgage background a plus","Attention to compliance requirements"], niceToHave:["Financial Services Cloud","DocuSign integration"], applyUrl:"https://radian.com/about-radian/careers", websiteUrl:"https://radian.com" },
+  { id:"sf29", company:"Catalant Technologies",   logo:"Ca", title:"Salesforce RevOps Admin (PT Remote)",     location:"Remote",                   salary:"$52Ã¢ÂÂ68/hr",  type:"Contract",  tag:"salesforce", match:88, about:"Catalant connects companies with business experts for project work. Their RevOps team uses Salesforce to manage enterprise client and expert workflows.", description:"Contract role supporting Catalant's RevOps Salesforce org Ã¢ÂÂ automation, data architecture, and executive reporting.", requirements:["ADM-201","Flow Builder & automation","RevOps mindset"], niceToHave:["Outreach or SalesLoft integration","CPQ experience"], applyUrl:"https://catalant.com/careers/", websiteUrl:"https://catalant.com" },
+  { id:"sf30", company:"Siemens Healthineers",    logo:"Si", title:"Salesforce Admin Ã¢ÂÂ Medical Devices PT",   location:"Malvern, PA (Hybrid)",     salary:"$50Ã¢ÂÂ66/hr",  type:"Part-Time", tag:"salesforce", match:84, about:"Siemens Healthineers is a global medical technology company with significant US operations in Malvern, PA. Their commercial team manages service and sales in Salesforce.", description:"Support Salesforce for a medical devices commercial team Ã¢ÂÂ field service, case management, and reporting.", requirements:["SF Admin Certified","Service Cloud or Field Service experience","Healthcare/medical device preferred"], niceToHave:["Field Service Lightning","SAP integration awareness"], applyUrl:"https://www.siemens-healthineers.com/en-us/careers", websiteUrl:"https://www.siemens-healthineers.com" },
 ];
 
-/* âââ JOB POOL: 21 NOTARY JOBS âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ JOB POOL: 21 NOTARY JOBS Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const NOTARY_POOL = [
-  { id:"n01", company:"Snapdocs",                  logo:"ð", title:"Mobile Notary Signing Agent",          location:"Philadelphia, PA",        salary:"$75â200/signing", type:"Freelance", tag:"notary", match:98, about:"Snapdocs is the mortgage industry's leading digital closing platform, connecting lenders and title companies with professional notary signing agents nationwide.", description:"Join the Snapdocs network to receive real-estate loan signing assignments directly from title companies. Accept only the orders you want.", requirements:["Active PA Notary Commission","NNA Signing Agent Cert preferred","Laser printer","Reliable transportation"], niceToHave:["E&O Insurance ($25k+)","NNA background check on file"], applyUrl:"https://www.snapdocs.com/notaries", websiteUrl:"https://www.snapdocs.com" },
-  { id:"n02", company:"Proof (formerly Notarize)", logo:"âï¸", title:"Remote Online Notary (RON)",            location:"Remote",                  salary:"$25â50/session",  type:"Part-Time", tag:"notary", match:93, about:"Proof is the leading RON platform for legally binding remote notarizations via secure audio-visual technology across 40+ states.", description:"Perform RON sessions from home using Proof's compliant video platform. Sessions run 10â15 minutes and you set your own availability.", requirements:["PA Notary Commission","PA RON authorization","Webcam & stable internet","Background check"], niceToHave:["Identity verification experience","Multilingual abilities"], applyUrl:"https://www.proof.com/notaries", websiteUrl:"https://www.proof.com" },
-  { id:"n03", company:"Signing Services of America", logo:"ð", title:"Loan Signing Agent",                 location:"Philadelphia Metro",       salary:"$100â175/signing",type:"Freelance", tag:"notary", match:95, about:"SSA is one of the nation's leading signing service companies, partnering with title companies, escrow firms, and mortgage lenders across all 50 states.", description:"Accept loan closing assignments throughout greater Philadelphia and South Jersey. SSA coordinates with borrowers â you show up prepared.", requirements:["Active PA Notary Commission","NNA Certified Signing Agent","NNA background check","E&O Insurance"], niceToHave:["Bilingual (Spanish)","Real estate experience"], applyUrl:"https://www.signingservicesofamerica.com/join-our-network", websiteUrl:"https://www.signingservicesofamerica.com" },
-  { id:"n04", company:"NotaryGo",                  logo:"ðºï¸", title:"On-Demand Mobile Notary",              location:"Philadelphia, PA",        salary:"$50â150/visit",   type:"Freelance", tag:"notary", match:88, about:"NotaryGo connects clients in hospitals, care facilities, law offices, and homes with credentialed mobile notaries via an on-demand app.", description:"Accept on-demand requests through the NotaryGo app â hospital bedside visits, estate documents, POA, and general legal paperwork.", requirements:["Active PA Notary Commission","Available evenings/weekends","Reliable transportation","Professional demeanor"], niceToHave:["Medical or legal document experience","Bilingual"], applyUrl:"https://www.notarygo.com/become-a-notary", websiteUrl:"https://www.notarygo.com" },
-  { id:"n05", company:"SigningOrder",              logo:"ð", title:"Signing Agent â Title Closings",        location:"South Jersey / Philly",   salary:"$90â150/signing", type:"Freelance", tag:"notary", match:91, about:"SigningOrder matches title companies and attorneys with certified loan signing agents throughout the tri-state area.", description:"Build steady signing income through the SigningOrder network. Title companies post assignments and you can develop ongoing client relationships.", requirements:["NNA Certified Signing Agent","Clean background check","Laser printer","Professional punctuality"], niceToHave:["Title insurance document familiarity","Existing title company relationships"], applyUrl:"https://www.signingorder.com/become-signing-agent", websiteUrl:"https://www.signingorder.com" },
-  { id:"n06", company:"National Notary Association", logo:"ðï¸", title:"NNA Signing Agent Network â Philadelphia", location:"Philadelphia, PA",  salary:"Varies by engagement", type:"Part-Time", tag:"notary", match:85, about:"The NNA is the nation's largest nonprofit notary membership organization, connecting credentialed notaries with a nationwide referral network.", description:"NNA membership gives you access to assignments from lenders, title companies, and legal professionals seeking vetted notaries in Philadelphia.", requirements:["PA Notary Commission","NNA certification","Background screening","NNA Code of Professional Responsibility"], niceToHave:["Real estate, medical, or estate specialty","Bilingual"], applyUrl:"https://www.nationalnotary.org/notary-signing-agent", websiteUrl:"https://www.nationalnotary.org" },
-  { id:"n07", company:"Signature Closers",         logo:"âï¸", title:"Notary Signing Agent",                  location:"Philadelphia Metro",       salary:"$85â150/signing", type:"Freelance", tag:"notary", match:90, about:"Signature Closers is a title and settlement services company specializing in flexible remote and mobile closing solutions across the mid-Atlantic region.", description:"Complete residential and refinance loan signings for Signature Closers' title and lender network throughout the Philadelphia metro area.", requirements:["Active PA Notary Commission","Loan signing experience preferred","NNA background check","E&O Insurance"], niceToHave:["Spanish-speaking ability","Knowledge of RON platforms"], applyUrl:"https://www.signatureclosers.com/become-a-notary", websiteUrl:"https://www.signatureclosers.com" },
-  { id:"n08", company:"ClosingCorp (ICE Mortgage)", logo:"ð ", title:"Mobile Notary â Mortgage Closings",    location:"Philadelphia, PA",        salary:"$100â160/signing",type:"Freelance", tag:"notary", match:89, about:"ClosingCorp (now part of ICE Mortgage Technology) is a leading provider of closing cost data and settlement solutions for the US mortgage market.", description:"Join ICE's preferred notary network to handle mortgage and refinance closings in the Philadelphia region.", requirements:["PA Notary Commission","NNA Certified Signing Agent","Professional attire","Same-day document return"], niceToHave:["MISMO training","Digital closing platform experience"], applyUrl:"https://www.icemortgagetechnology.com/", websiteUrl:"https://www.icemortgagetechnology.com" },
-  { id:"n09", company:"OneNotary",                 logo:"1ï¸â£", title:"Remote Online Notary",                  location:"Remote",                  salary:"$20â40/session",  type:"Part-Time", tag:"notary", match:87, about:"OneNotary is a secure RON platform providing notarization services to individuals, businesses, and legal professionals across the US.", description:"Join OneNotary as an independent RON to handle legal and personal documents from your home office. Flexible, short sessions.", requirements:["PA Notary License","PA RON Authorization","Video-capable device","Background check"], niceToHave:["Legal document experience","High availability during business hours"], applyUrl:"https://www.onenotary.us/become-a-notary/", websiteUrl:"https://www.onenotary.us" },
-  { id:"n10", company:"NotaryCam (WFG)",           logo:"ð¥", title:"RON Notary â Estate & Legal Docs",       location:"Remote",                  salary:"$25â45/session",  type:"Part-Time", tag:"notary", match:86, about:"NotaryCam (a WFG National Title company) is a pioneer in remote online notarization, handling real estate, legal, and personal documents for clients nationwide.", description:"Perform remote notarizations via NotaryCam's secure platform. Specialize in estate planning, legal documents, and real estate closings.", requirements:["PA Notary License","RON Certification","Reliable internet & webcam","Customer-first attitude"], niceToHave:["Estate planning document experience","Evening availability"], applyUrl:"https://www.notarycam.com/become-a-notary/", websiteUrl:"https://www.notarycam.com" },
-  { id:"n11", company:"Bilingual Notary Network",  logo:"ð", title:"Bilingual Mobile Notary (EN/ES)",        location:"Philadelphia, PA",        salary:"$60â130/visit",   type:"Freelance", tag:"notary", match:84, about:"Bilingual Notary Network serves diverse communities with bilingual notary signing agents for real estate, immigration, and legal documents.", description:"Provide mobile notary services to Spanish-speaking and diverse Philadelphia communities. A meaningful, impactful role.", requirements:["PA Notary Commission","Bilingual (Spanish preferred)","Mobile transportation","Professional conduct"], niceToHave:["Immigration document experience","Legal or real estate background"], applyUrl:"https://www.bilingualnotarynetwork.com/join", websiteUrl:"https://www.bilingualnotarynetwork.com" },
-  { id:"n12", company:"Pavaso (Digital Close)",    logo:"ð»", title:"Digital Closing Notary Agent",           location:"Remote / Philly Metro",   salary:"$80â145/closing", type:"Freelance", tag:"notary", match:88, about:"Pavaso is a leading digital mortgage closing platform enabling hybrid and fully digital closings. Their notary network handles eClose and hybrid transactions.", description:"Facilitate digital and hybrid mortgage closings using Pavaso's platform. Training provided.", requirements:["PA Notary Commission","Comfort with digital closing platforms","Detail-oriented","Reliable internet"], niceToHave:["eSign and eNotary familiarity","Mortgage industry background"], applyUrl:"https://www.pavaso.com/notary", websiteUrl:"https://www.pavaso.com" },
-  { id:"n13", company:"Amrock (Rocket Mortgage)",  logo:"ð", title:"Notary Closing Agent â Philly Region",   location:"Philadelphia Metro",       salary:"$100â175/closing",type:"Freelance", tag:"notary", match:93, about:"Amrock, backed by Rocket Companies, is one of the largest title, valuations, and settlement services companies in the US.", description:"Join Amrock's preferred notary network to handle high-volume Rocket Mortgage closings in the greater Philadelphia area.", requirements:["PA Notary Commission","NNA Certified Signing Agent","NNA-approved background check","Professional presentation"], niceToHave:["Rocket or Quicken Loans closing experience","eClose platform experience"], applyUrl:"https://www.amrock.com/closing-agents/", websiteUrl:"https://www.amrock.com" },
-  { id:"n14", company:"SIGNiX",                   logo:"ð", title:"Remote Online Notary Partner",           location:"Remote",                  salary:"$18â35/session",  type:"Part-Time", tag:"notary", match:82, about:"SIGNiX is a digital signature and RON platform used by financial institutions, healthcare organizations, and legal professionals nationwide.", description:"Become a SIGNiX RON partner and handle digital notarizations for financial, legal, and healthcare clients remotely.", requirements:["PA Notary License","PA RON Authorization","Digital signature platform comfort","Quiet home workspace"], niceToHave:["Financial services document experience","Flexible daytime availability"], applyUrl:"https://www.signix.com/notary-signup", websiteUrl:"https://www.signix.com" },
-  { id:"n15", company:"Mobile Notary Services of PA", logo:"ð", title:"General Mobile Notary",               location:"Philadelphia, PA",        salary:"$20â35/doc + travel", type:"Part-Time", tag:"notary", match:86, about:"A Philadelphia-based mobile notary agency serving law firms, healthcare facilities, senior communities, and individuals requiring on-location notary services.", description:"Local mobile notary role serving hospital visits, POA signings, estate documents, affidavits, and oath administrations across Philadelphia.", requirements:["PA Notary Commission","Flexible availability","Own transportation","Professional and compassionate"], niceToHave:["Hospital or elder care experience","Evening/weekend availability"], applyUrl:"https://www.nationalnotary.org/find-a-notary", websiteUrl:"https://www.nationalnotary.org" },
-  { id:"n16", company:"ALTA Best Practices Firm",  logo:"ð", title:"Certified Notary Signing Agent",         location:"Philadelphia Metro",       salary:"$90â155/signing", type:"Freelance", tag:"notary", match:87, about:"An ALTA Best Practices certified title and settlement company serving lenders and real estate professionals across Pennsylvania and New Jersey.", description:"Become part of a compliant, quality-focused notary signing network. Consistent assignment volume for credentialed agents.", requirements:["PA Notary Commission","NNA Signing Agent Certification","E&O Insurance","ALTA compliance awareness"], niceToHave:["Title industry experience","Background check on file"], applyUrl:"https://www.alta.org/resources/notary.cfm", websiteUrl:"https://www.alta.org" },
-  { id:"n17", company:"Notary Public Underwriters", logo:"ð¡ï¸", title:"E&O Insured Notary Network Agent",      location:"Philadelphia, PA",        salary:"$75â140/engagement", type:"Freelance", tag:"notary", match:84, about:"NPU is one of the nation's largest providers of notary E&O insurance and professional resources, helping notaries build sustainable signing businesses.", description:"Build your professional notary practice with NPU's network, resources, and insured agent designation. Ideal for notaries building a book of business.", requirements:["Active PA Notary Commission","E&O Insurance (from NPU or other)","Professional business approach"], niceToHave:["Any existing client relationships","Marketing savvy"], applyUrl:"https://www.npunderwriters.com/notary-network", websiteUrl:"https://www.npunderwriters.com" },
-  { id:"n18", company:"Fidelity National Title",   logo:"ð¦", title:"Notary Closing Agent",                   location:"Philadelphia, PA",        salary:"$95â165/closing", type:"Freelance", tag:"notary", match:91, about:"Fidelity National Title is one of the nation's largest title insurance and settlement services companies, with offices throughout the Philadelphia region.", description:"Join Fidelity's preferred notary panel to handle residential and commercial closings in the greater Philadelphia area.", requirements:["PA Notary Commission","NNA Certified Signing Agent","Background-screened","Laser printer"], niceToHave:["eClose experience","Spanish-speaking ability"], applyUrl:"https://www.fntic.com/careers/", websiteUrl:"https://www.fntic.com" },
-  { id:"n19", company:"Old Republic National Title", logo:"ð", title:"Signing Agent â Preferred Panel",       location:"Philadelphia Metro",       salary:"$90â155/closing", type:"Freelance", tag:"notary", match:89, about:"Old Republic National Title is a major provider of title insurance and settlement services with a large presence in Pennsylvania and New Jersey.", description:"Join Old Republic's preferred signing agent panel for consistent loan closing assignments throughout the Philadelphia region.", requirements:["PA Notary Commission","NNA background check","Professional presentation","Same-day document return"], niceToHave:["Commercial closing experience","RON authorization"], applyUrl:"https://www.oldrepublictitle.com/careers", websiteUrl:"https://www.oldrepublictitle.com" },
-  { id:"n20", company:"Philly Estate Planning Attorneys", logo:"âï¸", title:"Notary Public â Estate & Legal Docs", location:"Philadelphia, PA",    salary:"$25â50/visit",    type:"Part-Time", tag:"notary", match:83, about:"A consortium of Philadelphia estate planning and elder law attorneys seeking reliable notaries for client signings â wills, trusts, healthcare directives, and POA documents.", description:"Provide notarization services for estate planning attorneys' clients in Philadelphia. Flexible scheduling, meaningful work.", requirements:["PA Notary Commission","Detail-oriented & patient","Professional and confidential","Own transportation"], niceToHave:["Estate planning document familiarity","Elder care experience","Evening/weekend availability"], applyUrl:"https://www.philabar.org/", websiteUrl:"https://www.philabar.org" },
-  { id:"n21", company:"Radian / Green River Capital", logo:"ð¡", title:"REO Closing Notary Agent",              location:"Philadelphia Metro",       salary:"$85â140/closing", type:"Freelance", tag:"notary", match:86, about:"Green River Capital, a Radian company, manages REO (real estate owned) assets for lenders and servicers. Their closing team works with mobile notaries for REO property transactions.", description:"Handle REO and asset liquidation closings for a Radian subsidiary throughout the greater Philadelphia area.", requirements:["PA Notary Commission","REO or real estate closing experience preferred","NNA background check","Professional reliability"], niceToHave:["Asset management document experience","Commercial real estate familiarity"], applyUrl:"https://www.greenrivercapital.com/careers", websiteUrl:"https://www.greenrivercapital.com" },
+  { id:"n01", company:"Snapdocs",                  logo:"Ã°ÂÂÂ", title:"Mobile Notary Signing Agent",          location:"Philadelphia, PA",        salary:"$75Ã¢ÂÂ200/signing", type:"Freelance", tag:"notary", match:98, about:"Snapdocs is the mortgage industry's leading digital closing platform, connecting lenders and title companies with professional notary signing agents nationwide.", description:"Join the Snapdocs network to receive real-estate loan signing assignments directly from title companies. Accept only the orders you want.", requirements:["Active PA Notary Commission","NNA Signing Agent Cert preferred","Laser printer","Reliable transportation"], niceToHave:["E&O Insurance ($25k+)","NNA background check on file"], applyUrl:"https://www.snapdocs.com/notaries", websiteUrl:"https://www.snapdocs.com" },
+  { id:"n02", company:"Proof (formerly Notarize)", logo:"Ã¢ÂÂÃ¯Â¸Â", title:"Remote Online Notary (RON)",            location:"Remote",                  salary:"$25Ã¢ÂÂ50/session",  type:"Part-Time", tag:"notary", match:93, about:"Proof is the leading RON platform for legally binding remote notarizations via secure audio-visual technology across 40+ states.", description:"Perform RON sessions from home using Proof's compliant video platform. Sessions run 10Ã¢ÂÂ15 minutes and you set your own availability.", requirements:["PA Notary Commission","PA RON authorization","Webcam & stable internet","Background check"], niceToHave:["Identity verification experience","Multilingual abilities"], applyUrl:"https://www.proof.com/notaries", websiteUrl:"https://www.proof.com" },
+  { id:"n03", company:"Signing Services of America", logo:"Ã°ÂÂÂ", title:"Loan Signing Agent",                 location:"Philadelphia Metro",       salary:"$100Ã¢ÂÂ175/signing",type:"Freelance", tag:"notary", match:95, about:"SSA is one of the nation's leading signing service companies, partnering with title companies, escrow firms, and mortgage lenders across all 50 states.", description:"Accept loan closing assignments throughout greater Philadelphia and South Jersey. SSA coordinates with borrowers Ã¢ÂÂ you show up prepared.", requirements:["Active PA Notary Commission","NNA Certified Signing Agent","NNA background check","E&O Insurance"], niceToHave:["Bilingual (Spanish)","Real estate experience"], applyUrl:"https://www.signingservicesofamerica.com/join-our-network", websiteUrl:"https://www.signingservicesofamerica.com" },
+  { id:"n04", company:"NotaryGo",                  logo:"Ã°ÂÂÂºÃ¯Â¸Â", title:"On-Demand Mobile Notary",              location:"Philadelphia, PA",        salary:"$50Ã¢ÂÂ150/visit",   type:"Freelance", tag:"notary", match:88, about:"NotaryGo connects clients in hospitals, care facilities, law offices, and homes with credentialed mobile notaries via an on-demand app.", description:"Accept on-demand requests through the NotaryGo app Ã¢ÂÂ hospital bedside visits, estate documents, POA, and general legal paperwork.", requirements:["Active PA Notary Commission","Available evenings/weekends","Reliable transportation","Professional demeanor"], niceToHave:["Medical or legal document experience","Bilingual"], applyUrl:"https://www.notarygo.com/become-a-notary", websiteUrl:"https://www.notarygo.com" },
+  { id:"n05", company:"SigningOrder",              logo:"Ã°ÂÂÂ", title:"Signing Agent Ã¢ÂÂ Title Closings",        location:"South Jersey / Philly",   salary:"$90Ã¢ÂÂ150/signing", type:"Freelance", tag:"notary", match:91, about:"SigningOrder matches title companies and attorneys with certified loan signing agents throughout the tri-state area.", description:"Build steady signing income through the SigningOrder network. Title companies post assignments and you can develop ongoing client relationships.", requirements:["NNA Certified Signing Agent","Clean background check","Laser printer","Professional punctuality"], niceToHave:["Title insurance document familiarity","Existing title company relationships"], applyUrl:"https://www.signingorder.com/become-signing-agent", websiteUrl:"https://www.signingorder.com" },
+  { id:"n06", company:"National Notary Association", logo:"Ã°ÂÂÂÃ¯Â¸Â", title:"NNA Signing Agent Network Ã¢ÂÂ Philadelphia", location:"Philadelphia, PA",  salary:"Varies by engagement", type:"Part-Time", tag:"notary", match:85, about:"The NNA is the nation's largest nonprofit notary membership organization, connecting credentialed notaries with a nationwide referral network.", description:"NNA membership gives you access to assignments from lenders, title companies, and legal professionals seeking vetted notaries in Philadelphia.", requirements:["PA Notary Commission","NNA certification","Background screening","NNA Code of Professional Responsibility"], niceToHave:["Real estate, medical, or estate specialty","Bilingual"], applyUrl:"https://www.nationalnotary.org/notary-signing-agent", websiteUrl:"https://www.nationalnotary.org" },
+  { id:"n07", company:"Signature Closers",         logo:"Ã¢ÂÂÃ¯Â¸Â", title:"Notary Signing Agent",                  location:"Philadelphia Metro",       salary:"$85Ã¢ÂÂ150/signing", type:"Freelance", tag:"notary", match:90, about:"Signature Closers is a title and settlement services company specializing in flexible remote and mobile closing solutions across the mid-Atlantic region.", description:"Complete residential and refinance loan signings for Signature Closers' title and lender network throughout the Philadelphia metro area.", requirements:["Active PA Notary Commission","Loan signing experience preferred","NNA background check","E&O Insurance"], niceToHave:["Spanish-speaking ability","Knowledge of RON platforms"], applyUrl:"https://www.signatureclosers.com/become-a-notary", websiteUrl:"https://www.signatureclosers.com" },
+  { id:"n08", company:"ClosingCorp (ICE Mortgage)", logo:"Ã°ÂÂÂ ", title:"Mobile Notary Ã¢ÂÂ Mortgage Closings",    location:"Philadelphia, PA",        salary:"$100Ã¢ÂÂ160/signing",type:"Freelance", tag:"notary", match:89, about:"ClosingCorp (now part of ICE Mortgage Technology) is a leading provider of closing cost data and settlement solutions for the US mortgage market.", description:"Join ICE's preferred notary network to handle mortgage and refinance closings in the Philadelphia region.", requirements:["PA Notary Commission","NNA Certified Signing Agent","Professional attire","Same-day document return"], niceToHave:["MISMO training","Digital closing platform experience"], applyUrl:"https://www.icemortgagetechnology.com/", websiteUrl:"https://www.icemortgagetechnology.com" },
+  { id:"n09", company:"OneNotary",                 logo:"1Ã¯Â¸ÂÃ¢ÂÂ£", title:"Remote Online Notary",                  location:"Remote",                  salary:"$20Ã¢ÂÂ40/session",  type:"Part-Time", tag:"notary", match:87, about:"OneNotary is a secure RON platform providing notarization services to individuals, businesses, and legal professionals across the US.", description:"Join OneNotary as an independent RON to handle legal and personal documents from your home office. Flexible, short sessions.", requirements:["PA Notary License","PA RON Authorization","Video-capable device","Background check"], niceToHave:["Legal document experience","High availability during business hours"], applyUrl:"https://www.onenotary.us/become-a-notary/", websiteUrl:"https://www.onenotary.us" },
+  { id:"n10", company:"NotaryCam (WFG)",           logo:"Ã°ÂÂÂ¥", title:"RON Notary Ã¢ÂÂ Estate & Legal Docs",       location:"Remote",                  salary:"$25Ã¢ÂÂ45/session",  type:"Part-Time", tag:"notary", match:86, about:"NotaryCam (a WFG National Title company) is a pioneer in remote online notarization, handling real estate, legal, and personal documents for clients nationwide.", description:"Perform remote notarizations via NotaryCam's secure platform. Specialize in estate planning, legal documents, and real estate closings.", requirements:["PA Notary License","RON Certification","Reliable internet & webcam","Customer-first attitude"], niceToHave:["Estate planning document experience","Evening availability"], applyUrl:"https://www.notarycam.com/become-a-notary/", websiteUrl:"https://www.notarycam.com" },
+  { id:"n11", company:"Bilingual Notary Network",  logo:"Ã°ÂÂÂ", title:"Bilingual Mobile Notary (EN/ES)",        location:"Philadelphia, PA",        salary:"$60Ã¢ÂÂ130/visit",   type:"Freelance", tag:"notary", match:84, about:"Bilingual Notary Network serves diverse communities with bilingual notary signing agents for real estate, immigration, and legal documents.", description:"Provide mobile notary services to Spanish-speaking and diverse Philadelphia communities. A meaningful, impactful role.", requirements:["PA Notary Commission","Bilingual (Spanish preferred)","Mobile transportation","Professional conduct"], niceToHave:["Immigration document experience","Legal or real estate background"], applyUrl:"https://www.bilingualnotarynetwork.com/join", websiteUrl:"https://www.bilingualnotarynetwork.com" },
+  { id:"n12", company:"Pavaso (Digital Close)",    logo:"Ã°ÂÂÂ»", title:"Digital Closing Notary Agent",           location:"Remote / Philly Metro",   salary:"$80Ã¢ÂÂ145/closing", type:"Freelance", tag:"notary", match:88, about:"Pavaso is a leading digital mortgage closing platform enabling hybrid and fully digital closings. Their notary network handles eClose and hybrid transactions.", description:"Facilitate digital and hybrid mortgage closings using Pavaso's platform. Training provided.", requirements:["PA Notary Commission","Comfort with digital closing platforms","Detail-oriented","Reliable internet"], niceToHave:["eSign and eNotary familiarity","Mortgage industry background"], applyUrl:"https://www.pavaso.com/notary", websiteUrl:"https://www.pavaso.com" },
+  { id:"n13", company:"Amrock (Rocket Mortgage)",  logo:"Ã°ÂÂÂ", title:"Notary Closing Agent Ã¢ÂÂ Philly Region",   location:"Philadelphia Metro",       salary:"$100Ã¢ÂÂ175/closing",type:"Freelance", tag:"notary", match:93, about:"Amrock, backed by Rocket Companies, is one of the largest title, valuations, and settlement services companies in the US.", description:"Join Amrock's preferred notary network to handle high-volume Rocket Mortgage closings in the greater Philadelphia area.", requirements:["PA Notary Commission","NNA Certified Signing Agent","NNA-approved background check","Professional presentation"], niceToHave:["Rocket or Quicken Loans closing experience","eClose platform experience"], applyUrl:"https://www.amrock.com/closing-agents/", websiteUrl:"https://www.amrock.com" },
+  { id:"n14", company:"SIGNiX",                   logo:"Ã°ÂÂÂ", title:"Remote Online Notary Partner",           location:"Remote",                  salary:"$18Ã¢ÂÂ35/session",  type:"Part-Time", tag:"notary", match:82, about:"SIGNiX is a digital signature and RON platform used by financial institutions, healthcare organizations, and legal professionals nationwide.", description:"Become a SIGNiX RON partner and handle digital notarizations for financial, legal, and healthcare clients remotely.", requirements:["PA Notary License","PA RON Authorization","Digital signature platform comfort","Quiet home workspace"], niceToHave:["Financial services document experience","Flexible daytime availability"], applyUrl:"https://www.signix.com/notary-signup", websiteUrl:"https://www.signix.com" },
+  { id:"n15", company:"Mobile Notary Services of PA", logo:"Ã°ÂÂÂ", title:"General Mobile Notary",               location:"Philadelphia, PA",        salary:"$20Ã¢ÂÂ35/doc + travel", type:"Part-Time", tag:"notary", match:86, about:"A Philadelphia-based mobile notary agency serving law firms, healthcare facilities, senior communities, and individuals requiring on-location notary services.", description:"Local mobile notary role serving hospital visits, POA signings, estate documents, affidavits, and oath administrations across Philadelphia.", requirements:["PA Notary Commission","Flexible availability","Own transportation","Professional and compassionate"], niceToHave:["Hospital or elder care experience","Evening/weekend availability"], applyUrl:"https://www.nationalnotary.org/find-a-notary", websiteUrl:"https://www.nationalnotary.org" },
+  { id:"n16", company:"ALTA Best Practices Firm",  logo:"Ã°ÂÂÂ", title:"Certified Notary Signing Agent",         location:"Philadelphia Metro",       salary:"$90Ã¢ÂÂ155/signing", type:"Freelance", tag:"notary", match:87, about:"An ALTA Best Practices certified title and settlement company serving lenders and real estate professionals across Pennsylvania and New Jersey.", description:"Become part of a compliant, quality-focused notary signing network. Consistent assignment volume for credentialed agents.", requirements:["PA Notary Commission","NNA Signing Agent Certification","E&O Insurance","ALTA compliance awareness"], niceToHave:["Title industry experience","Background check on file"], applyUrl:"https://www.alta.org/resources/notary.cfm", websiteUrl:"https://www.alta.org" },
+  { id:"n17", company:"Notary Public Underwriters", logo:"Ã°ÂÂÂ¡Ã¯Â¸Â", title:"E&O Insured Notary Network Agent",      location:"Philadelphia, PA",        salary:"$75Ã¢ÂÂ140/engagement", type:"Freelance", tag:"notary", match:84, about:"NPU is one of the nation's largest providers of notary E&O insurance and professional resources, helping notaries build sustainable signing businesses.", description:"Build your professional notary practice with NPU's network, resources, and insured agent designation. Ideal for notaries building a book of business.", requirements:["Active PA Notary Commission","E&O Insurance (from NPU or other)","Professional business approach"], niceToHave:["Any existing client relationships","Marketing savvy"], applyUrl:"https://www.npunderwriters.com/notary-network", websiteUrl:"https://www.npunderwriters.com" },
+  { id:"n18", company:"Fidelity National Title",   logo:"Ã°ÂÂÂ¦", title:"Notary Closing Agent",                   location:"Philadelphia, PA",        salary:"$95Ã¢ÂÂ165/closing", type:"Freelance", tag:"notary", match:91, about:"Fidelity National Title is one of the nation's largest title insurance and settlement services companies, with offices throughout the Philadelphia region.", description:"Join Fidelity's preferred notary panel to handle residential and commercial closings in the greater Philadelphia area.", requirements:["PA Notary Commission","NNA Certified Signing Agent","Background-screened","Laser printer"], niceToHave:["eClose experience","Spanish-speaking ability"], applyUrl:"https://www.fntic.com/careers/", websiteUrl:"https://www.fntic.com" },
+  { id:"n19", company:"Old Republic National Title", logo:"Ã°ÂÂÂ", title:"Signing Agent Ã¢ÂÂ Preferred Panel",       location:"Philadelphia Metro",       salary:"$90Ã¢ÂÂ155/closing", type:"Freelance", tag:"notary", match:89, about:"Old Republic National Title is a major provider of title insurance and settlement services with a large presence in Pennsylvania and New Jersey.", description:"Join Old Republic's preferred signing agent panel for consistent loan closing assignments throughout the Philadelphia region.", requirements:["PA Notary Commission","NNA background check","Professional presentation","Same-day document return"], niceToHave:["Commercial closing experience","RON authorization"], applyUrl:"https://www.oldrepublictitle.com/careers", websiteUrl:"https://www.oldrepublictitle.com" },
+  { id:"n20", company:"Philly Estate Planning Attorneys", logo:"Ã¢ÂÂÃ¯Â¸Â", title:"Notary Public Ã¢ÂÂ Estate & Legal Docs", location:"Philadelphia, PA",    salary:"$25Ã¢ÂÂ50/visit",    type:"Part-Time", tag:"notary", match:83, about:"A consortium of Philadelphia estate planning and elder law attorneys seeking reliable notaries for client signings Ã¢ÂÂ wills, trusts, healthcare directives, and POA documents.", description:"Provide notarization services for estate planning attorneys' clients in Philadelphia. Flexible scheduling, meaningful work.", requirements:["PA Notary Commission","Detail-oriented & patient","Professional and confidential","Own transportation"], niceToHave:["Estate planning document familiarity","Elder care experience","Evening/weekend availability"], applyUrl:"https://www.philabar.org/", websiteUrl:"https://www.philabar.org" },
+  { id:"n21", company:"Radian / Green River Capital", logo:"Ã°ÂÂÂ¡", title:"REO Closing Notary Agent",              location:"Philadelphia Metro",       salary:"$85Ã¢ÂÂ140/closing", type:"Freelance", tag:"notary", match:86, about:"Green River Capital, a Radian company, manages REO (real estate owned) assets for lenders and servicers. Their closing team works with mobile notaries for REO property transactions.", description:"Handle REO and asset liquidation closings for a Radian subsidiary throughout the greater Philadelphia area.", requirements:["PA Notary Commission","REO or real estate closing experience preferred","NNA background check","Professional reliability"], niceToHave:["Asset management document experience","Commercial real estate familiarity"], applyUrl:"https://www.greenrivercapital.com/careers", websiteUrl:"https://www.greenrivercapital.com" },
 ];
 
-/* âââ WEEKLY ROTATION ENGINE âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ WEEKLY ROTATION ENGINE Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const ROTATION_KEY   = "jamille_rotation_v1";
 const APPS_KEY       = "jamille_apps_v2";
 const PROGRAM_DAYS   = 90;
@@ -163,13 +163,13 @@ function daysBetween(a, b) {
   return Math.floor((new Date(b) - new Date(a)) / 86400000);
 }
 
-/* âââ RESUME DATA âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ RESUME DATA Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const RESUME = {
   name:"Jamille Tinsley",
   title:"Certified Salesforce Administrator & Operations Executive",
   contact:{ phone:"267-205-5153", email:"jamille.tinsley13@gmail.com", location:"Philadelphia, PA 19124", linkedin:"linkedin.com/in/jamille-tinsley", trailhead:"trailblazer.me/id/jamillewilliams" },
   summary:"Results-driven Certified Salesforce Administrator and operations executive with 12+ years of cross-functional leadership experience across the PERS, legal, and technology sectors. Proven track record building CRM infrastructure from the ground up, launching products, scaling teams, and delivering measurable process improvements. Adept at translating complex business needs into elegant Salesforce solutions in fast-paced Agile environments. Simultaneously active as a licensed Notary Public available for mobile and remote online signings throughout the Philadelphia region.",
-  skills:["Salesforce Administration (ADM-201)","Flow Builder & Process Automation","Einstein Analytics & Dashboards","Pardot / Marketing Cloud","Apex & Visualforce","Data Migration & Deduplication","API & Third-Party Integrations","Project Management","Agile / Scrum Methodology","Advanced Microsoft Excel","Strategic Planning & KPI Design","Team Leadership & Coaching","SOP & Process Design","Product Launch & Management","Notary Public â Commonwealth of PA"],
+  skills:["Salesforce Administration (ADM-201)","Flow Builder & Process Automation","Einstein Analytics & Dashboards","Pardot / Marketing Cloud","Apex & Visualforce","Data Migration & Deduplication","API & Third-Party Integrations","Project Management","Agile / Scrum Methodology","Advanced Microsoft Excel","Strategic Planning & KPI Design","Team Leadership & Coaching","SOP & Process Design","Product Launch & Management","Notary Public Ã¢ÂÂ Commonwealth of PA"],
   tools:["Five9","Conga","DocuSign","Zuora","Velocify","ShipStation","Scout","Litify","Pardot","Einstein Analytics"],
   certifications:[
     { name:"Salesforce Certified Administrator (ADM-201)", issuer:"Salesforce", year:"Active" },
@@ -177,20 +177,20 @@ const RESUME = {
     { name:"Trailhead Ranger", issuer:"Salesforce Trailhead", year:"100+ Badges" },
   ],
   experience:[
-    { title:"Salesforce Administrator", company:"Yelp, Inc.", tenure:"October 2020 â Present", location:"Remote", bullets:["Administer and maintain two Salesforce orgs for the Sales & Marketing Engineering team in an Agile Scrum environment.","Lead Feature Request triage and delivery for new product implementations including Einstein AI tools and Pardot campaign automation.","Refined SFDC support model, achieving a 30% increase in case response rate and completion speed.","Collaborate cross-functionally with Sales, Marketing, and Engineering stakeholders to align CRM capabilities with business goals."] },
-    { title:"Salesforce Administrator", company:"Pond Lehocky, LLP", tenure:"May 2019 â October 2020", location:"Philadelphia, PA", bullets:["Managed daily Salesforce operations as the sole CRM expert for one of Philadelphia's top personal injury law firms (200+ users) on the Litify platform.","Configured and expanded org to support adoption of new practice areas and onboarding of new user cohorts.","Led org-wide data quality initiative: eliminated duplicate records and established governance standards using Process Builder best practices."] },
-    { title:"Director of Operations", company:"Medical Guardian", tenure:"2013 â 2016", location:"Philadelphia, PA", bullets:["Conceptualized and built the company's entire Operations Division from the ground up, reporting directly to the CEO.","Founded and scaled six functional departments: Client Services, Billing, Fulfillment, Procurement, Training, Collections, Retention, and Document Management.","Recruited, hired, and developed a team of 60+ employees; designed management structure, career paths, and performance systems.","Authored all SOPs, KPIs, and SLAs across operational functions. Named Medical Guardian Employee of the Year (2013)."] },
-    { title:"Salesforce Administrator", company:"Medical Guardian", tenure:"2014 â 2017", location:"Philadelphia, PA", bullets:["Sole Salesforce Administrator for a 200+ user organization â owned all configuration, customization, and end-user support.","Key stakeholder in full Salesforce implementation: custom objects, workflow automation, validation rules, Apex triggers, Visualforce pages, and dashboards.","Integrated Salesforce with Five9, Conga, DocuSign, Zuora, Scout, ShipStation, and Velocify to create a unified operational ecosystem.","Delivered ongoing end-user training programs driving high adoption and system proficiency across departments."] },
-    { title:"Director of Vendor Relations & Product Management", company:"Medical Guardian", tenure:"2016 â 2017", location:"Philadelphia, PA", bullets:["Led the successful launch of two hardware products, overseeing vendor management and cross-functional operations throughout the lifecycle.","Directed product testing, influenced UX and feature design, and owned root cause analysis for post-launch issues.","Coordinated Engineering, Sales, Operations, and Customer Service for seamless go-to-market execution."] },
-    { title:"Director of Accounts", company:"Medical Guardian", tenure:"2010 â 2013", location:"Philadelphia, PA", bullets:["Stabilized and scaled a fast-growth small business as a senior executive reporting directly to the CEO.","Spearheaded the launch of two product lines and established Sales, Vendor Relations, and Finance departments.","Led system implementations for Five9 and Velocify, including vendor selection, configuration, and training.","Managed full employee lifecycle: onboarding, offboarding, performance management, and organizational design."] },
+    { title:"Salesforce Administrator", company:"Yelp, Inc.", tenure:"October 2020 Ã¢ÂÂ Present", location:"Remote", bullets:["Administer and maintain two Salesforce orgs for the Sales & Marketing Engineering team in an Agile Scrum environment.","Lead Feature Request triage and delivery for new product implementations including Einstein AI tools and Pardot campaign automation.","Refined SFDC support model, achieving a 30% increase in case response rate and completion speed.","Collaborate cross-functionally with Sales, Marketing, and Engineering stakeholders to align CRM capabilities with business goals."] },
+    { title:"Salesforce Administrator", company:"Pond Lehocky, LLP", tenure:"May 2019 Ã¢ÂÂ October 2020", location:"Philadelphia, PA", bullets:["Managed daily Salesforce operations as the sole CRM expert for one of Philadelphia's top personal injury law firms (200+ users) on the Litify platform.","Configured and expanded org to support adoption of new practice areas and onboarding of new user cohorts.","Led org-wide data quality initiative: eliminated duplicate records and established governance standards using Process Builder best practices."] },
+    { title:"Director of Operations", company:"Medical Guardian", tenure:"2013 Ã¢ÂÂ 2016", location:"Philadelphia, PA", bullets:["Conceptualized and built the company's entire Operations Division from the ground up, reporting directly to the CEO.","Founded and scaled six functional departments: Client Services, Billing, Fulfillment, Procurement, Training, Collections, Retention, and Document Management.","Recruited, hired, and developed a team of 60+ employees; designed management structure, career paths, and performance systems.","Authored all SOPs, KPIs, and SLAs across operational functions. Named Medical Guardian Employee of the Year (2013)."] },
+    { title:"Salesforce Administrator", company:"Medical Guardian", tenure:"2014 Ã¢ÂÂ 2017", location:"Philadelphia, PA", bullets:["Sole Salesforce Administrator for a 200+ user organization Ã¢ÂÂ owned all configuration, customization, and end-user support.","Key stakeholder in full Salesforce implementation: custom objects, workflow automation, validation rules, Apex triggers, Visualforce pages, and dashboards.","Integrated Salesforce with Five9, Conga, DocuSign, Zuora, Scout, ShipStation, and Velocify to create a unified operational ecosystem.","Delivered ongoing end-user training programs driving high adoption and system proficiency across departments."] },
+    { title:"Director of Vendor Relations & Product Management", company:"Medical Guardian", tenure:"2016 Ã¢ÂÂ 2017", location:"Philadelphia, PA", bullets:["Led the successful launch of two hardware products, overseeing vendor management and cross-functional operations throughout the lifecycle.","Directed product testing, influenced UX and feature design, and owned root cause analysis for post-launch issues.","Coordinated Engineering, Sales, Operations, and Customer Service for seamless go-to-market execution."] },
+    { title:"Director of Accounts", company:"Medical Guardian", tenure:"2010 Ã¢ÂÂ 2013", location:"Philadelphia, PA", bullets:["Stabilized and scaled a fast-growth small business as a senior executive reporting directly to the CEO.","Spearheaded the launch of two product lines and established Sales, Vendor Relations, and Finance departments.","Led system implementations for Five9 and Velocify, including vendor selection, configuration, and training.","Managed full employee lifecycle: onboarding, offboarding, performance management, and organizational design."] },
   ],
   education:[],
 };
 
 
-/* âââ RESOURCES & NEWS DATA âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ RESOURCES & NEWS DATA Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const SF_NEWS = [
-  { title:"TDX 2026: Agentforce & Slack Updates for Admins", source:"Admin Salesforce Blog", date:"Apr 2026", tag:"Admin", url:"https://admin.salesforce.com/blog/2026/tdx-announcements-agentforce-slack-updates-for-admins", summary:"TDX 2026 previews Agentforce Experience Layer â build once, deploy everywhere. Big news for flow automation and Slack integration." },
+  { title:"TDX 2026: Agentforce & Slack Updates for Admins", source:"Admin Salesforce Blog", date:"Apr 2026", tag:"Admin", url:"https://admin.salesforce.com/blog/2026/tdx-announcements-agentforce-slack-updates-for-admins", summary:"TDX 2026 previews Agentforce Experience Layer Ã¢ÂÂ build once, deploy everywhere. Big news for flow automation and Slack integration." },
   { title:"Spring '26: Top 11 Features for Admins", source:"Salesforce Ben", date:"Jan 2026", tag:"Release", url:"https://www.salesforceben.com/top-11-salesforce-spring-26-features-for-admins/", summary:"Setup with Agentforce (Beta), new file deletion permissions, Trust Center rename, and more key Spring '26 highlights." },
   { title:"2026 Salesforce Admin Roadmap: AI, Agentforce & Trends", source:"Admin Salesforce Blog", date:"Jan 2026", tag:"Strategy", url:"https://admin.salesforce.com/blog/2026/2026-roadmap-for-salesforce-admins-ai-agentforce-and-emerging-trends-podcast", summary:"Admin Evangelists predict 2026: smaller flows, AI agents doing heavy lifting, governance-first AI adoption." },
   { title:"50 Most Popular SF Interview Q&A (Updated 2026)", source:"Salesforce Ben", date:"Apr 2026", tag:"Career", url:"https://www.salesforceben.com/salesforce-interview-questions/", summary:"Most-referenced list of SF Admin interview questions, updated with 2026 AI/Agentforce angles. Essential prep reading." },
@@ -201,14 +201,14 @@ const SF_NEWS = [
 ];
 
 const NOTARY_NEWS = [
-  { title:"NEW: PA Notary Regulations Effective March 28, 2026", source:"PA Dept. of State", date:"Mar 2026", tag:"â ï¸ Must Read", url:"https://www.pa.gov/agencies/dos/programs/notaries/notary-regulations-changes", summary:"RULONA fully implemented: bond increases to $25,000 for new/renewing notaries, new seal format required, updated journal privacy rules." },
-  { title:"PA Notary Fee Schedule â New $5 Witnessing Fee", source:"Notaries Equipment Co.", date:"Mar 2026", tag:"Fees", url:"https://www.notariesequipment.com/blogs/news/new-pennsylvania-notary-public-regulations-go-into-effect-march-28-2026", summary:"New $5 fee per signature for witnessing/attesting acts. RON providers face stricter tech approval rules." },
-  { title:"Pennsylvania Notary Fee Changes â Public Comment Recap", source:"Notary Stars", date:"Jan 2026", tag:"Fees", url:"https://www.notarystars.com/blog/pennsylvania-department-of-state-seeks-public-comment-on-proposed-notary-fee-schedule-changes", summary:"PA considering full fee schedule overhaul for first time in 20 years. Electronic/RON notaries may charge additional $20 per act." },
+  { title:"NEW: PA Notary Regulations Effective March 28, 2026", source:"PA Dept. of State", date:"Mar 2026", tag:"Ã¢ÂÂ Ã¯Â¸Â Must Read", url:"https://www.pa.gov/agencies/dos/programs/notaries/notary-regulations-changes", summary:"RULONA fully implemented: bond increases to $25,000 for new/renewing notaries, new seal format required, updated journal privacy rules." },
+  { title:"PA Notary Fee Schedule Ã¢ÂÂ New $5 Witnessing Fee", source:"Notaries Equipment Co.", date:"Mar 2026", tag:"Fees", url:"https://www.notariesequipment.com/blogs/news/new-pennsylvania-notary-public-regulations-go-into-effect-march-28-2026", summary:"New $5 fee per signature for witnessing/attesting acts. RON providers face stricter tech approval rules." },
+  { title:"Pennsylvania Notary Fee Changes Ã¢ÂÂ Public Comment Recap", source:"Notary Stars", date:"Jan 2026", tag:"Fees", url:"https://www.notarystars.com/blog/pennsylvania-department-of-state-seeks-public-comment-on-proposed-notary-fee-schedule-changes", summary:"PA considering full fee schedule overhaul for first time in 20 years. Electronic/RON notaries may charge additional $20 per act." },
   { title:"Proof Expands RON Network to PA Notaries", source:"Proof.com", date:"2024", tag:"RON", url:"https://www.proof.com/blog/notarize-network-pennsylvania-notaries", summary:"Pennsylvania notaries can now earn income on the Proof platform performing on-demand RON sessions for nationwide signers." },
   { title:"Why Notaries Still Matter in the Digital Age", source:"PAN (PA Notary Assoc.)", date:"Sep 2025", tag:"Industry", url:"https://www.notary.org/article-why-notaries-still-matter-in-the-digital-age", summary:"Courts grant notarized docs presumption of authenticity. RON expanding access. Notaries remain essential fraud prevention." },
   { title:"Top 10 RON Platforms Ranked for 2026", source:"Proof.com Blog", date:"2026", tag:"RON", url:"https://www.proof.com/blog/", summary:"Comprehensive ranking of RON technology providers from niche to enterprise-ready, with security and identity verification analysis." },
   { title:"PAN Spring/Summer 2026 Seminar Schedule", source:"PA Notary Association", date:"Apr 2026", tag:"Education", url:"https://www.notary.org/notary-blog", summary:"New in-person and Zoom seminars for continuing education. Stay compliant with RULONA updates." },
-  { title:"NNA Knowledge Center â Signing Agent Resources", source:"National Notary Assoc.", date:"Ongoing", tag:"Resource", url:"https://www.nationalnotary.org/notary-bulletin", summary:"The NNA's resource hub for certified signing agents â loan document guides, best practices, ethics, and professional development." },
+  { title:"NNA Knowledge Center Ã¢ÂÂ Signing Agent Resources", source:"National Notary Assoc.", date:"Ongoing", tag:"Resource", url:"https://www.nationalnotary.org/notary-bulletin", summary:"The NNA's resource hub for certified signing agents Ã¢ÂÂ loan document guides, best practices, ethics, and professional development." },
 ];
 
 const SF_RESOURCES = [
@@ -219,13 +219,13 @@ const SF_RESOURCES = [
   { title:"SF Admin Interview Questions (SF Ben)", desc:"50 most popular SF Admin interview questions updated for 2026", url:"https://www.salesforceben.com/salesforce-interview-questions/", tag:"Career" },
   { title:"Admin Hero", desc:"Bite-sized SF admin tips, Flow tricks, and release breakdowns", url:"https://www.adminhero.com/", tag:"Learning" },
   { title:"Salesforce Weekly Newsletter", desc:"Weekly digest of Salesforce community news and resources", url:"https://www.salesforceweekly.com/", tag:"Newsletter" },
-  { title:"Litify (Legal Salesforce) Blog", desc:"Updates on Salesforce for legal industry â relevant from Pond Lehocky experience", url:"https://www.litify.com/blog/", tag:"Legal SF" },
+  { title:"Litify (Legal Salesforce) Blog", desc:"Updates on Salesforce for legal industry Ã¢ÂÂ relevant from Pond Lehocky experience", url:"https://www.litify.com/blog/", tag:"Legal SF" },
 ];
 
 const NOTARY_RESOURCES = [
-  { title:"PA Dept. of State â Notary Portal", desc:"Official PA notary application, renewal, and regulation info", url:"https://www.notaries.pa.gov/", tag:"Official" },
+  { title:"PA Dept. of State Ã¢ÂÂ Notary Portal", desc:"Official PA notary application, renewal, and regulation info", url:"https://www.notaries.pa.gov/", tag:"Official" },
   { title:"National Notary Association", desc:"NNA certification, signing agent training, E&O insurance", url:"https://www.nationalnotary.org/", tag:"NNA" },
-  { title:"PAN â Pennsylvania Notary Association", desc:"PA-specific notary education, seminars, and news", url:"https://www.notary.org/", tag:"PA Notary" },
+  { title:"PAN Ã¢ÂÂ Pennsylvania Notary Association", desc:"PA-specific notary education, seminars, and news", url:"https://www.notary.org/", tag:"PA Notary" },
   { title:"NNA Signing Agent Certification", desc:"The gold standard credential for loan signing assignments", url:"https://www.nationalnotary.org/notary-signing-agent", tag:"Certification" },
   { title:"Snapdocs Notary Network", desc:"Join the largest digital mortgage closing platform for notaries", url:"https://www.snapdocs.com/notaries", tag:"Platform" },
   { title:"Proof (formerly Notarize)", desc:"Join the RON platform for on-demand remote notarizations", url:"https://www.proof.com/notaries", tag:"RON" },
@@ -234,17 +234,17 @@ const NOTARY_RESOURCES = [
 ];
 
 
-/* âââ KANBAN COLUMNS âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ KANBAN COLUMNS Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const COLUMNS = [
   { key:"saved",     label:"Saved",     color:"#7A8FA6" },
   { key:"applied",   label:"Applied",   color:"#2680D4" },
   { key:"interview", label:"Interview", color:"#C9A84C" },
-  { key:"offer",     label:"Offer ð",  color:"#28A068" },
+  { key:"offer",     label:"Offer Ã°ÂÂÂ",  color:"#28A068" },
   { key:"rejected",  label:"Rejected",  color:"#B83232" },
 ];
 const blankBoard = () => Object.fromEntries(COLUMNS.map(c => [c.key, []]));
 
-/* âââ STORAGE HOOK âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ STORAGE HOOK Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function useStorage(key, fallback) {
   const [val, setVal] = useState(fallback);
   useEffect(() => {
@@ -259,7 +259,7 @@ function useStorage(key, fallback) {
   return [val, save];
 }
 
-/* âââ UI PRIMITIVES âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ UI PRIMITIVES Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const Badge = ({ children, color = C.gold }) => (
   <span style={{ background:color+"18", color, border:`1px solid ${color}30`, borderRadius:20,
     padding:"2px 10px", fontSize:10, fontWeight:600, letterSpacing:"0.06em",
@@ -298,14 +298,14 @@ const Btn = ({ children, onClick, variant="gold", disabled, full, icon, style={}
   );
 };
 
-/* âââ SIDEBAR âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ SIDEBAR Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const NAV = [
-  { id:"dashboard", icon:"â", label:"Overview"       },
-  { id:"resume",    icon:"â", label:"Resume"          },
-  { id:"jobs",      icon:"â", label:"Job Board"       },
-  { id:"tracker",   icon:"â«", label:"Applications"   },
-  { id:"interview", icon:"â", label:"Interview Prep" },
-  { id:"resources", icon:"â§", label:"Resources"       },
+  { id:"dashboard", icon:"Ã¢ÂÂ", label:"Overview"       },
+  { id:"resume",    icon:"Ã¢ÂÂ", label:"Resume"          },
+  { id:"jobs",      icon:"Ã¢ÂÂ", label:"Job Board"       },
+  { id:"tracker",   icon:"Ã¢ÂÂ«", label:"Applications"   },
+  { id:"interview", icon:"Ã¢ÂÂ", label:"Interview Prep" },
+  { id:"resources", icon:"Ã¢ÂÂ§", label:"Resources"       },
 ];
 
 function Sidebar({ active, setActive }) {
@@ -322,9 +322,9 @@ function Sidebar({ active, setActive }) {
         <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:700,
           fontSize:17, color:C.white, lineHeight:1.3 }}>Jamille Tinsley</div>
         <div style={{ color:C.mutedMid, fontSize:11, marginTop:3,
-          fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>SF Admin Â· Notary Â· Philadelphia</div>
+          fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>SF Admin ÃÂ· Notary ÃÂ· Philadelphia</div>
 
-/* âââ STORAGE HOOK (localStorage + Claude storage fallback) âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ STORAGE HOOK (localStorage + Claude storage fallback) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function useStorage(key, fallback) {
   const [val, setVal] = useState(() => {
     try { const s = localStorage.getItem(key); return s ? JSON.parse(s) : fallback; }
@@ -349,7 +349,7 @@ function useStorage(key, fallback) {
   return [val, save];
 }
 
-/* âââ UI PRIMITIVES âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ UI PRIMITIVES Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const Badge = ({ children, color = C.gold }) => (
   <span style={{ background:color+"18", color, border:`1px solid ${color}30`, borderRadius:20,
     padding:"2px 10px", fontSize:10, fontWeight:600, letterSpacing:"0.06em",
@@ -389,13 +389,13 @@ const Btn = ({ children, onClick, variant="gold", disabled, full, icon, style={}
 };
 
 
-/* âââ SIDEBAR (desktop) + BOTTOM NAV (mobile) + DRAWER (tablet) âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ SIDEBAR (desktop) + BOTTOM NAV (mobile) + DRAWER (tablet) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const NAV = [
-  { id:"dashboard", icon:"â", label:"Overview"      },
-  { id:"resume",    icon:"â", label:"Resume"         },
-  { id:"jobs",      icon:"â", label:"Jobs"           },
-  { id:"tracker",   icon:"â«", label:"Tracker"        },
-  { id:"interview", icon:"â", label:"Interview"      },
+  { id:"dashboard", icon:"Ã¢ÂÂ", label:"Overview"      },
+  { id:"resume",    icon:"Ã¢ÂÂ", label:"Resume"         },
+  { id:"jobs",      icon:"Ã¢ÂÂ", label:"Jobs"           },
+  { id:"tracker",   icon:"Ã¢ÂÂ«", label:"Tracker"        },
+  { id:"interview", icon:"Ã¢ÂÂ", label:"Interview"      },
 ];
 
 function Sidebar({ active, setActive }) {
@@ -412,13 +412,13 @@ function Sidebar({ active, setActive }) {
         <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:700,
           fontSize:17, color:C.white, lineHeight:1.3 }}>Jamille Tinsley</div>
         <div style={{ color:C.mutedMid, fontSize:11, marginTop:3,
-          fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>SF Admin Â· Notary Â· Philly</div>
+          fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>SF Admin ÃÂ· Notary ÃÂ· Philly</div>
         <a href="https://www.linkedin.com/in/jamille-tinsley/" target="_blank" rel="noreferrer"
           style={{ display:"inline-flex", alignItems:"center", gap:5, marginTop:11,
             color:C.gold, fontSize:10.5, textDecoration:"none", fontWeight:600,
             background:C.goldDim, border:`1px solid ${C.border}`,
             padding:"5px 10px", borderRadius:6, fontFamily:"'Outfit',sans-serif" }}>
-          in  LinkedIn â
+          in  LinkedIn Ã¢ÂÂ
         </a>
       </div>
       <nav style={{ padding:"12px 10px", flex:1 }}>
@@ -443,7 +443,7 @@ function Sidebar({ active, setActive }) {
         {["ADM-201 Certified","Notary Public, PA","100+ Trailhead Badges"].map(t => (
           <div key={t} style={{ display:"flex", alignItems:"center", gap:7,
             fontSize:10, color:C.muted, marginBottom:6, fontFamily:"'Outfit',sans-serif" }}>
-            <span style={{ color:C.gold, fontSize:7 }}>â¦</span>{t}
+            <span style={{ color:C.gold, fontSize:7 }}>Ã¢ÂÂ¦</span>{t}
           </div>
         ))}
       </div>
@@ -503,11 +503,11 @@ function DrawerNav({ active, setActive, open, onClose }) {
               <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:700,
                 fontSize:15, color:C.white }}>Jamille Tinsley</div>
               <div style={{ color:C.mutedMid, fontSize:10.5,
-                fontFamily:"'Outfit',sans-serif" }}>SF Admin Â· Notary</div>
+                fontFamily:"'Outfit',sans-serif" }}>SF Admin ÃÂ· Notary</div>
             </div>
           </div>
           <button onClick={onClose} style={{ background:"transparent", border:"none",
-            color:C.muted, cursor:"pointer", fontSize:20, padding:"4px 8px" }}>â</button>
+            color:C.muted, cursor:"pointer", fontSize:20, padding:"4px 8px" }}>Ã¢ÂÂ</button>
         </div>
         <nav style={{ padding:"12px 10px", flex:1 }}>
           {NAV.map(n => {
@@ -532,7 +532,7 @@ function DrawerNav({ active, setActive, open, onClose }) {
               color:C.gold, fontSize:11, textDecoration:"none", fontWeight:600,
               background:C.goldDim, border:`1px solid ${C.border}`,
               padding:"7px 12px", borderRadius:6, fontFamily:"'Outfit',sans-serif" }}>
-            in  LinkedIn â
+            in  LinkedIn Ã¢ÂÂ
           </a>
         </div>
       </aside>
@@ -541,7 +541,7 @@ function DrawerNav({ active, setActive, open, onClose }) {
 }
 
 
-/* âââ JOB MODAL (full-screen mobile, panel desktop) âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ JOB MODAL (full-screen mobile, panel desktop) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function JobModal({ job, onClose, onSave, saved }) {
   const { isMobile } = useScreen();
   if (!job) return null;
@@ -573,7 +573,7 @@ function JobModal({ job, onClose, onSave, saved }) {
           <button onClick={onClose} style={{ position:"absolute", top:14, right:14,
             background:C.card, border:`1px solid ${C.border}`, color:C.muted,
             cursor:"pointer", fontSize:16, borderRadius:8, padding:"6px 10px",
-            fontFamily:"'Outfit',sans-serif" }}>â Close</button>
+            fontFamily:"'Outfit',sans-serif" }}>Ã¢ÂÂ Close</button>
 
           <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:14, paddingRight:80 }}>
             <div style={{ width:44, height:44, borderRadius:10,
@@ -591,8 +591,8 @@ function JobModal({ job, onClose, onSave, saved }) {
           </div>
           <div style={{ display:"flex", flexWrap:"wrap", gap:7, marginBottom:14 }}>
             <Badge color={tc}>{job.type}</Badge>
-            <Badge color={C.gold}>ð° {job.salary}</Badge>
-            <Badge color={C.mutedMid}>ð {job.location}</Badge>
+            <Badge color={C.gold}>Ã°ÂÂÂ° {job.salary}</Badge>
+            <Badge color={C.mutedMid}>Ã°ÂÂÂ {job.location}</Badge>
           </div>
           {job.match && (
             <div style={{ display:"flex", alignItems:"center", gap:12,
@@ -632,7 +632,7 @@ function JobModal({ job, onClose, onSave, saved }) {
           <div style={{ marginBottom:20 }}>
             {job.requirements.map((r,i) => (
               <div key={i} style={{ display:"flex", gap:10, marginBottom:9 }}>
-                <span style={{ color:C.gold, marginTop:1, flexShrink:0 }}>â¸</span>
+                <span style={{ color:C.gold, marginTop:1, flexShrink:0 }}>Ã¢ÂÂ¸</span>
                 <span style={{ fontSize:13, color:C.offwhite, lineHeight:1.5,
                   fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>{r}</span>
               </div>
@@ -645,7 +645,7 @@ function JobModal({ job, onClose, onSave, saved }) {
               <div style={{ marginBottom:12 }}>
                 {job.niceToHave.map((r,i) => (
                   <div key={i} style={{ display:"flex", gap:10, marginBottom:8 }}>
-                    <span style={{ color:C.mutedMid, marginTop:1, flexShrink:0 }}>â¦</span>
+                    <span style={{ color:C.mutedMid, marginTop:1, flexShrink:0 }}>Ã¢ÂÂ¦</span>
                     <span style={{ fontSize:12.5, color:C.mutedMid, lineHeight:1.5,
                       fontFamily:"'Outfit',sans-serif" }}>{r}</span>
                   </div>
@@ -661,7 +661,7 @@ function JobModal({ job, onClose, onSave, saved }) {
           background:`linear-gradient(0deg,${C.bg},transparent)`,
           display:"flex", flexDirection:"column", gap:9, flexShrink:0 }}>
           <a href={job.applyUrl} target="_blank" rel="noreferrer" style={{ textDecoration:"none" }}>
-            <Btn full icon="â" style={{ fontSize:isMobile?13:14, padding:"13px 20px",
+            <Btn full icon="Ã¢ÂÂ" style={{ fontSize:isMobile?13:14, padding:"13px 20px",
               background:`linear-gradient(135deg,${C.gold},${C.goldBright})`,
               boxShadow:`0 6px 28px ${C.gold}44` }}>
               Apply Now at {job.company}
@@ -669,12 +669,12 @@ function JobModal({ job, onClose, onSave, saved }) {
           </a>
           <div style={{ display:"flex", gap:8 }}>
             <Btn variant={saved?"ghost":"outline"} onClick={onSave} disabled={saved}
-              full icon={saved?"â":undefined} style={{ flex:1 }}>
+              full icon={saved?"Ã¢ÂÂ":undefined} style={{ flex:1 }}>
               {saved ? "Saved" : "Save to Tracker"}
             </Btn>
             <a href={job.websiteUrl} target="_blank" rel="noreferrer"
               style={{ textDecoration:"none", flex:1 }}>
-              <Btn variant="ghost" full icon="ð">Website</Btn>
+              <Btn variant="ghost" full icon="Ã°ÂÂÂ">Website</Btn>
             </a>
           </div>
         </div>
@@ -684,7 +684,7 @@ function JobModal({ job, onClose, onSave, saved }) {
 }
 
 
-/* âââ REFRESH BANNER âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ REFRESH BANNER Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function RefreshBanner({ rotation, onRefresh, refreshed }) {
   const { isMobile } = useScreen();
   if (!rotation) return null;
@@ -700,10 +700,10 @@ function RefreshBanner({ rotation, onRefresh, refreshed }) {
       padding:isMobile?"12px 16px":"16px 22px", marginBottom:20 }}>
       <div style={{ display:"flex", justifyContent:"space-between", marginBottom:8, flexWrap:"wrap", gap:6 }}>
         <EyebrowLabel>
-          {expired ? "90-Day Program Complete â" : `Week ${rotation.weekNum+1} of 13 Â· 90-Day Refresh`}
+          {expired ? "90-Day Program Complete Ã¢ÂÂ" : `Week ${rotation.weekNum+1} of 13 ÃÂ· 90-Day Refresh`}
         </EyebrowLabel>
         <span style={{ fontSize:10, color:C.muted, fontFamily:"'Outfit',sans-serif" }}>
-          {expired ? "" : `Day ${Math.min(programDay,90)} Â· ${daysLeft}d left`}
+          {expired ? "" : `Day ${Math.min(programDay,90)} ÃÂ· ${daysLeft}d left`}
         </span>
       </div>
       <div style={{ height:4, background:C.border, borderRadius:2, overflow:"hidden", marginBottom:10 }}>
@@ -714,7 +714,7 @@ function RefreshBanner({ rotation, onRefresh, refreshed }) {
       {!expired && (
         <div style={{ display:"flex", justifyContent:"flex-end" }}>
           <Btn onClick={onRefresh} variant={nextRefresh<=0?"gold":"outline"}
-            icon={refreshed?"â":"â»"} style={{ padding:"7px 14px", fontSize:11 }}>
+            icon={refreshed?"Ã¢ÂÂ":"Ã¢ÂÂ»"} style={{ padding:"7px 14px", fontSize:11 }}>
             {refreshed?"Refreshed!":nextRefresh<=0?"Refresh Now":"Preview Next"}
           </Btn>
         </div>
@@ -723,15 +723,15 @@ function RefreshBanner({ rotation, onRefresh, refreshed }) {
   );
 }
 
-/* âââ DASHBOARD âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ DASHBOARD Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function Dashboard({ applications, setTab, rotation }) {
   const { isMobile } = useScreen();
   const total = Object.values(applications).flat().length;
   const stats = [
-    { label:"Applications", value:total,                          icon:"â", color:C.blue   },
-    { label:"Interviews",   value:applications.interview?.length, icon:"â", color:C.gold   },
-    { label:"Offers",       value:applications.offer?.length,     icon:"â", color:C.green  },
-    { label:"Saved",        value:applications.saved?.length,     icon:"â", color:C.mutedMid },
+    { label:"Applications", value:total,                          icon:"Ã¢ÂÂ", color:C.blue   },
+    { label:"Interviews",   value:applications.interview?.length, icon:"Ã¢ÂÂ", color:C.gold   },
+    { label:"Offers",       value:applications.offer?.length,     icon:"Ã¢ÂÂ", color:C.green  },
+    { label:"Saved",        value:applications.saved?.length,     icon:"Ã¢ÂÂ", color:C.mutedMid },
   ];
   return (
     <div className="fade-up">
@@ -745,7 +745,7 @@ function Dashboard({ applications, setTab, rotation }) {
         </h1>
         <p style={{ color:C.muted, margin:"10px 0 0", fontSize:13,
           fontFamily:"'Outfit',sans-serif", fontWeight:300, lineHeight:1.7 }}>
-          15 fresh jobs every week Â· 90-day program Â· Philly &amp; Remote
+          15 fresh jobs every week ÃÂ· 90-day program ÃÂ· Philly &amp; Remote
         </p>
       </div>
 
@@ -765,7 +765,7 @@ function Dashboard({ applications, setTab, rotation }) {
                   Week {rotation.weekNum+1}/13
                 </span>
                 <span style={{ fontSize:10, color:C.muted, fontFamily:"'Outfit',sans-serif" }}>
-                  Day {Math.min(programDay,90)}/90 Â· {pct}%
+                  Day {Math.min(programDay,90)}/90 ÃÂ· {pct}%
                 </span>
               </div>
               <div style={{ height:4, background:C.border, borderRadius:2, overflow:"hidden" }}>
@@ -805,8 +805,8 @@ function Dashboard({ applications, setTab, rotation }) {
                 fontFamily:"'Outfit',sans-serif" }}>{s}</span>
             ))}
           </div>
-          {[["Focus","Part-Time SF Admin Â· Notary"],["Experience","12+ Years"],
-            ["Certifications","ADM-201 Â· PA Notary"],["Trailhead","Ranger Â· 100+ Badges"],
+          {[["Focus","Part-Time SF Admin ÃÂ· Notary"],["Experience","12+ Years"],
+            ["Certifications","ADM-201 ÃÂ· PA Notary"],["Trailhead","Ranger ÃÂ· 100+ Badges"],
             ["Location","Philadelphia, PA 19124"]].map(([k,v]) => (
             <div key={k} style={{ display:"flex", justifyContent:"space-between",
               fontSize:12.5, paddingBottom:9, marginBottom:9,
@@ -822,11 +822,11 @@ function Dashboard({ applications, setTab, rotation }) {
           <GoldDivider />
           <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
             {[
-              { icon:"â", label:"Browse 15 New Jobs",    sub:"This week's curated picks",          tab:"jobs",      c:C.blue  },
-              { icon:"â", label:"View / Print Resume",   sub:"Updated from LinkedIn & CV",         tab:"resume",    c:C.gold  },
-              { icon:"â«", label:"Track Applications",    sub:"Manage your job pipeline",           tab:"tracker",   c:C.green },
-              { icon:"â", label:"Interview Practice",    sub:"35+ role-specific Q&A + resources",  tab:"interview", c:C.amber },
-              { icon:"â§", label:"Resources & News",          sub:"SF updates, PA notary law, study links", tab:"resources", c:C.teal  },
+              { icon:"Ã¢ÂÂ", label:"Browse 15 New Jobs",    sub:"This week's curated picks",          tab:"jobs",      c:C.blue  },
+              { icon:"Ã¢ÂÂ", label:"View / Print Resume",   sub:"Updated from LinkedIn & CV",         tab:"resume",    c:C.gold  },
+              { icon:"Ã¢ÂÂ«", label:"Track Applications",    sub:"Manage your job pipeline",           tab:"tracker",   c:C.green },
+              { icon:"Ã¢ÂÂ", label:"Interview Practice",    sub:"35+ role-specific Q&A + resources",  tab:"interview", c:C.amber },
+              { icon:"Ã¢ÂÂ§", label:"Resources & News",          sub:"SF updates, PA notary law, study links", tab:"resources", c:C.teal  },
             ].map(a => (
               <button key={a.tab} onClick={() => setTab(a.tab)} style={{
                 background:`linear-gradient(90deg,${a.c}0A,transparent)`,
@@ -869,7 +869,7 @@ function Dashboard({ applications, setTab, rotation }) {
 }
 
 
-/* âââ RESUME VIEW âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ RESUME VIEW Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function ResumeView() {
   const { isMobile } = useScreen();
   const r = RESUME;
@@ -898,7 +898,7 @@ function ResumeView() {
           border:"none", borderRadius:9, padding:"10px 20px", fontWeight:700,
           cursor:"pointer", fontSize:12, fontFamily:"'Outfit',sans-serif",
           boxShadow:`0 4px 18px ${C.gold}33`, display:"flex", alignItems:"center", gap:6 }}>
-          â Print / Download
+          Ã¢ÂÂ Print / Download
         </button>
       </div>
       <div style={{ background:C.card, border:`1px solid ${C.border}`, borderRadius:16, overflow:"hidden" }}>
@@ -911,9 +911,9 @@ function ResumeView() {
             marginBottom:14, fontFamily:"'Outfit',sans-serif" }}>{r.title}</div>
           <div style={{ display:"flex", flexWrap:"wrap", gap:isMobile?8:14,
             fontSize:isMobile?11:12, color:C.mutedMid, fontFamily:"'Outfit',sans-serif" }}>
-            <span>ð± {r.contact.phone}</span>
-            <span>âï¸ {r.contact.email}</span>
-            <span>ð {r.contact.location}</span>
+            <span>Ã°ÂÂÂ± {r.contact.phone}</span>
+            <span>Ã¢ÂÂÃ¯Â¸Â {r.contact.email}</span>
+            <span>Ã°ÂÂÂ {r.contact.location}</span>
             <a href="https://www.linkedin.com/in/jamille-tinsley/" target="_blank" rel="noreferrer"
               style={{ color:C.gold, textDecoration:"none" }}>in {r.contact.linkedin}</a>
           </div>
@@ -929,7 +929,7 @@ function ResumeView() {
             {r.skills.map(s => (
               <div key={s} style={{ display:"flex", gap:7, fontSize:isMobile?11:12,
                 color:C.offwhite, padding:"3px 0", fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>
-                <span style={{ color:C.gold, fontSize:7, marginTop:5, flexShrink:0 }}>â¦</span>{s}
+                <span style={{ color:C.gold, fontSize:7, marginTop:5, flexShrink:0 }}>Ã¢ÂÂ¦</span>{s}
               </div>
             ))}
           </div>
@@ -961,7 +961,7 @@ function ResumeView() {
               <div style={{ marginTop:10 }}>
                 {exp.bullets.map((b,j) => (
                   <div key={j} style={{ display:"flex", gap:10, marginBottom:6 }}>
-                    <span style={{ color:C.gold, fontSize:7, marginTop:5, flexShrink:0 }}>â¸</span>
+                    <span style={{ color:C.gold, fontSize:7, marginTop:5, flexShrink:0 }}>Ã¢ÂÂ¸</span>
                     <span style={{ fontSize:isMobile?12:12.5, color:C.offwhite, lineHeight:1.6,
                       fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>{b}</span>
                   </div>
@@ -1003,7 +1003,7 @@ function ResumeView() {
                 <div style={{ marginTop:10, background:"rgba(200,120,48,0.12)",
                   border:"1px solid #C8783044", borderRadius:9, padding:"10px 14px",
                   display:"flex", gap:8 }}>
-                  <span style={{ fontSize:14 }}>â ï¸</span>
+                  <span style={{ fontSize:14 }}>Ã¢ÂÂ Ã¯Â¸Â</span>
                   <div>
                     <div style={{ fontSize:11, fontWeight:700, color:"#C87830",
                       fontFamily:"'Outfit',sans-serif", marginBottom:3 }}>
@@ -1026,7 +1026,7 @@ function ResumeView() {
 }
 
 
-/* âââ JOB BOARD âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ JOB BOARD Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
   const { isMobile, isTablet } = useScreen();
   const [filter, setFilter]   = useState("salesforce");
@@ -1054,7 +1054,7 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
 
       {/* Filter pills */}
       <div style={{ display:"flex", gap:8, marginBottom:18, flexWrap:"wrap", alignItems:"center" }}>
-        {[{key:"salesforce",label:"â  SF Admin"},{key:"notary",label:"â  Notary"}].map(f => (
+        {[{key:"salesforce",label:"Ã¢ÂÂ  SF Admin"},{key:"notary",label:"Ã¢ÂÂ  Notary"}].map(f => (
           <button key={f.key} onClick={() => setFilter(f.key)} style={{
             background:filter===f.key?`linear-gradient(135deg,${C.gold},${C.goldBright})`:"transparent",
             color:filter===f.key?"#060D16":C.muted,
@@ -1073,7 +1073,7 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
             borderRadius:9, padding:"8px 14px", color:C.gold, fontSize:11.5,
             fontWeight:600, textDecoration:"none", fontFamily:"'Outfit',sans-serif",
             whiteSpace:"nowrap" }}>
-          More â
+          More Ã¢ÂÂ
         </a>
       </div>
 
@@ -1115,12 +1115,12 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
                 fontFamily:"'Outfit',sans-serif" }}>{job.company}</div>
               <div style={{ display:"flex", gap:10, fontSize:11, color:C.muted,
                 marginBottom:10, fontFamily:"'Outfit',sans-serif", flexWrap:"wrap" }}>
-                <span>ð {job.location}</span>
-                <span>ð° {job.salary}</span>
+                <span>Ã°ÂÂÂ {job.location}</span>
+                <span>Ã°ÂÂÂ° {job.salary}</span>
               </div>
               <p style={{ fontSize:11.5, color:C.muted, margin:"0 0 12px", lineHeight:1.55,
                 fontFamily:"'Outfit',sans-serif", fontWeight:300, flex:1 }}>
-                {job.description.slice(0,90)}{job.description.length>90?"â¦":""}
+                {job.description.slice(0,90)}{job.description.length>90?"Ã¢ÂÂ¦":""}
               </p>
 
               <div style={{ display:"flex", gap:7, marginTop:"auto" }}>
@@ -1128,7 +1128,7 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
                   flex:1, background:C.goldDim, border:`1px solid ${C.gold}33`,
                   borderRadius:7, color:C.gold, fontSize:11, fontWeight:600,
                   cursor:"pointer", padding:"8px 0", fontFamily:"'Outfit',sans-serif" }}>
-                  View & Apply â
+                  View & Apply Ã¢ÂÂ
                 </button>
                 <button onClick={e=>{e.stopPropagation();onSaveJob(job);}}
                   disabled={isSaved} style={{
@@ -1137,7 +1137,7 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
                   borderRadius:7, color:isSaved?C.green:C.mutedMid,
                   fontSize:12, fontWeight:600, cursor:isSaved?"default":"pointer",
                   padding:"8px 12px", fontFamily:"'Outfit',sans-serif" }}>
-                  {isSaved?"â":"ï¼"}
+                  {isSaved?"Ã¢ÂÂ":"Ã¯Â¼Â"}
                 </button>
               </div>
             </div>
@@ -1153,7 +1153,7 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
 }
 
 
-/* âââ APP TRACKER âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ APP TRACKER Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function KanbanCard({ app, colKey, onMove, onRemove }) {
   return (
     <div style={{ background:C.surface, borderRadius:10, padding:"11px 13px",
@@ -1163,9 +1163,9 @@ function KanbanCard({ app, colKey, onMove, onRemove }) {
       <div style={{ fontSize:11, color:C.gold, fontWeight:600, marginBottom:7,
         fontFamily:"'Outfit',sans-serif" }}>{app.company}</div>
       <div style={{ display:"flex", flexDirection:"column", gap:2 }}>
-        {app.location && <span style={{ fontSize:10, color:C.muted, fontFamily:"'Outfit',sans-serif" }}>ð {app.location}</span>}
-        {app.salary   && <span style={{ fontSize:10, color:C.muted, fontFamily:"'Outfit',sans-serif" }}>ð° {app.salary}</span>}
-        {app.date     && <span style={{ fontSize:10, color:C.muted, fontFamily:"'Outfit',sans-serif" }}>ð {app.date}</span>}
+        {app.location && <span style={{ fontSize:10, color:C.muted, fontFamily:"'Outfit',sans-serif" }}>Ã°ÂÂÂ {app.location}</span>}
+        {app.salary   && <span style={{ fontSize:10, color:C.muted, fontFamily:"'Outfit',sans-serif" }}>Ã°ÂÂÂ° {app.salary}</span>}
+        {app.date     && <span style={{ fontSize:10, color:C.muted, fontFamily:"'Outfit',sans-serif" }}>Ã°ÂÂÂ {app.date}</span>}
       </div>
       {app.type && <div style={{ marginTop:7 }}><Badge color={app.type==="Notary"?C.teal:C.blue}>{app.type}</Badge></div>}
       {app.notes && <div style={{ fontSize:10.5, color:C.muted, marginTop:7, fontStyle:"italic",
@@ -1180,7 +1180,7 @@ function KanbanCard({ app, colKey, onMove, onRemove }) {
           </button>
         ))}
         <button onClick={() => onRemove(app,colKey)} style={{ background:"transparent",
-          color:C.red, border:"none", cursor:"pointer", fontSize:14, marginLeft:"auto" }}>â</button>
+          color:C.red, border:"none", cursor:"pointer", fontSize:14, marginLeft:"auto" }}>Ã¢ÂÂ</button>
       </div>
     </div>
   );
@@ -1234,7 +1234,7 @@ function AppTracker({ applications, setApplications }) {
             Your Pipeline
           </h2>
         </div>
-        <Btn onClick={() => setShowForm(!showForm)} icon="ï¼">Add Application</Btn>
+        <Btn onClick={() => setShowForm(!showForm)} icon="Ã¯Â¼Â">Add Application</Btn>
       </div>
 
       {showForm && (
@@ -1291,7 +1291,7 @@ function AppTracker({ applications, setApplications }) {
         </div>
         {isMobile && (
           <p style={{ fontSize:10, color:C.muted, textAlign:"center", marginTop:8,
-            fontFamily:"'Outfit',sans-serif" }}>â Swipe to see all stages â</p>
+            fontFamily:"'Outfit',sans-serif" }}>Ã¢ÂÂ Swipe to see all stages Ã¢ÂÂ</p>
         )}
       </div>
     </div>
@@ -1299,25 +1299,25 @@ function AppTracker({ applications, setApplications }) {
 }
 
 
-/* âââ INTERVIEW PREP âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ INTERVIEW PREP Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const INTERVIEW_SETS = {
-  behavioral:{label:"Behavioral",color:C.blue,icon:"ð§ ",
+  behavioral:{label:"Behavioral",color:C.blue,icon:"Ã°ÂÂ§Â ",
     resources:[
       {label:"STAR Method Guide",url:"https://www.themuse.com/advice/star-interview-method"},
       {label:"Behavioral Questions (Indeed)",url:"https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique"},
       {label:"Glassdoor SF Admin Reviews",url:"https://www.glassdoor.com/Interview/salesforce-administrator-interview-questions-SRCH_KO0,24.htm"},
     ],
     questions:[
-    {q:"Tell me about a time you improved a Salesforce process that saved time or reduced errors.",tip:"Use STAR. Quantify impact â e.g. '30% reduction in case response time at Yelp.' Name specific tools like Flow Builder or Pardot."},
-    {q:"Describe a situation where you managed competing priorities across multiple stakeholders.",tip:"Your CEO-reporting role at Medical Guardian is perfect here. You balanced Operations, Sales, and Product simultaneously. Frame with: situation â competing demands â your decision â measurable outcome."},
+    {q:"Tell me about a time you improved a Salesforce process that saved time or reduced errors.",tip:"Use STAR. Quantify impact Ã¢ÂÂ e.g. '30% reduction in case response time at Yelp.' Name specific tools like Flow Builder or Pardot."},
+    {q:"Describe a situation where you managed competing priorities across multiple stakeholders.",tip:"Your CEO-reporting role at Medical Guardian is perfect here. You balanced Operations, Sales, and Product simultaneously. Frame with: situation Ã¢ÂÂ competing demands Ã¢ÂÂ your decision Ã¢ÂÂ measurable outcome."},
     {q:"Give an example of a complex data migration you led. What challenges arose and how did you solve them?",tip:"Draw on your Medical Guardian full-org build. Mention Zuora, DocuSign, Five9 integration, governance standards, and what you'd do differently now."},
     {q:"Tell me about a time you trained end users on a new system. How did you ensure adoption?",tip:"Reference your 60+ person team at Medical Guardian. Mention SOPs, KPI tracking, feedback loops, and how you measured proficiency."},
     {q:"Describe a product launch you owned end-to-end.",tip:"Two hardware product launches as Director of Vendor Relations. Cover vendor selection, testing cycles, UX influence, root cause analysis, and go-to-market coordination."},
     {q:"Tell me about a time you had to push back on leadership or a stakeholder. How did you handle it?",tip:"Use a data-driven example. At Medical Guardian or Yelp, cite a time you used metrics/evidence to reframe expectations while maintaining the relationship."},
-    {q:"Describe a situation where something went wrong in Salesforce. How did you handle it?",tip:"Walk through your triage process: audit trail â identify cause â communicate ETA â fix â document â prevent recurrence. Real-world specifics show maturity."},
+    {q:"Describe a situation where something went wrong in Salesforce. How did you handle it?",tip:"Walk through your triage process: audit trail Ã¢ÂÂ identify cause Ã¢ÂÂ communicate ETA Ã¢ÂÂ fix Ã¢ÂÂ document Ã¢ÂÂ prevent recurrence. Real-world specifics show maturity."},
     {q:"How do you stay current with Salesforce releases and platform changes?",tip:"Mention admin.salesforce.com, Salesforce Ben, Trailhead release trails, the Admins Podcast, and your own sandbox testing practice."},
   ]},
-  technical:{label:"SF Technical",color:C.gold,icon:"âï¸",
+  technical:{label:"SF Technical",color:C.gold,icon:"Ã¢ÂÂÃ¯Â¸Â",
     resources:[
       {label:"Trailhead Admin Cert Path",url:"https://trailhead.salesforce.com/en/content/learn/trails/force_com_admin_beginner"},
       {label:"50 SF Interview Q&A 2026",url:"https://www.salesforceben.com/salesforce-interview-questions/"},
@@ -1325,56 +1325,56 @@ const INTERVIEW_SETS = {
       {label:"Focus on Force Study Guides",url:"https://focusonforce.com/"},
     ],
     questions:[
-    {q:"What's the difference between a Process Builder and a Flow? When would you use each?",tip:"Flows are now Salesforce's only automation tool â Salesforce retired Process Builder new creation. Mention your migration experience at Pond Lehocky and Yelp. For interviews, lead with: 'Salesforce retired Process Builder in favor of Flow. I migrated our existing automations...'"},
+    {q:"What's the difference between a Process Builder and a Flow? When would you use each?",tip:"Flows are now Salesforce's only automation tool Ã¢ÂÂ Salesforce retired Process Builder new creation. Mention your migration experience at Pond Lehocky and Yelp. For interviews, lead with: 'Salesforce retired Process Builder in favor of Flow. I migrated our existing automations...'"},
     {q:"How do you approach deduplication in a large Salesforce org with 200+ users?",tip:"Reference your Pond Lehocky dedup initiative. Cover: Duplicate Rules, Matching Rules, third-party tools (DemandTools, Cloudingo), and governance post-cleanup. Mention cross-object dedup strategy."},
     {q:"Walk me through how you'd design role hierarchy and sharing rules for a 200-person org.",tip:"You've built this at Yelp and Medical Guardian. Cover: OWD defaults (private/public read), role hierarchy design from CEO down, criteria-based sharing rules, manual sharing for edge cases, and the principle of least privilege."},
-    {q:"How have you used Einstein Analytics or AI tools to support business decisions?",tip:"Reference Einstein tools at Yelp â describe a specific dashboard or CRM Intelligence report that influenced a business outcome (e.g., pipeline health, case volume trends). Mention Agentforce awareness for 2026 relevance."},
+    {q:"How have you used Einstein Analytics or AI tools to support business decisions?",tip:"Reference Einstein tools at Yelp Ã¢ÂÂ describe a specific dashboard or CRM Intelligence report that influenced a business outcome (e.g., pipeline health, case volume trends). Mention Agentforce awareness for 2026 relevance."},
     {q:"What integrations have you managed, and how did you handle errors or sync failures?",tip:"Your list is impressive: Five9, Conga, DocuSign, Zuora, Scout, ShipStation, Velocify, Litify. Speak to: error logging, monitoring dashboards, vendor SLAs, middleware/API patterns, and documented runbooks."},
-    {q:"Explain validation rules vs. workflow rules. Give a real example of each.",tip:"Validation rules = enforce data quality at input (record save fails if criteria not met). Flows = trigger automated actions post-save. Example: Medical Guardian â validation rule required activation date on new accounts; Flow auto-assigned cases to billing team when status changed to 'Active'."},
+    {q:"Explain validation rules vs. workflow rules. Give a real example of each.",tip:"Validation rules = enforce data quality at input (record save fails if criteria not met). Flows = trigger automated actions post-save. Example: Medical Guardian Ã¢ÂÂ validation rule required activation date on new accounts; Flow auto-assigned cases to billing team when status changed to 'Active'."},
     {q:"How do you manage permission sets vs. profiles in a complex org?",tip:"Profiles = baseline access (every user needs one). Permission sets = additive permissions for specific user groups. Best practice: minimal baseline profiles + permission set groups for role-based access. Reference your 200+ user org at Medical Guardian and Yelp."},
-    {q:"What's your approach to Salesforce release management and sandbox testing?",tip:"Describe your release process: check admin.salesforce.com release notes â test in sandbox â identify impact on existing customizations â document changes â communicate to users â deploy with rollback plan. Mention three-release schedule (Spring/Summer/Winter)."},
-    {q:"How would you handle a user reporting that their records are suddenly not visible?",tip:"Triage: 1) Check OWD/sharing rules for changes via Setup Audit Trail. 2) Check role hierarchy â was the user's role changed? 3) Check record ownership transfer. 4) Check any recently deployed sharing rule changes. 5) Use 'Login As User' to validate visibility firsthand."},
+    {q:"What's your approach to Salesforce release management and sandbox testing?",tip:"Describe your release process: check admin.salesforce.com release notes Ã¢ÂÂ test in sandbox Ã¢ÂÂ identify impact on existing customizations Ã¢ÂÂ document changes Ã¢ÂÂ communicate to users Ã¢ÂÂ deploy with rollback plan. Mention three-release schedule (Spring/Summer/Winter)."},
+    {q:"How would you handle a user reporting that their records are suddenly not visible?",tip:"Triage: 1) Check OWD/sharing rules for changes via Setup Audit Trail. 2) Check role hierarchy Ã¢ÂÂ was the user's role changed? 3) Check record ownership transfer. 4) Check any recently deployed sharing rule changes. 5) Use 'Login As User' to validate visibility firsthand."},
     {q:"What are some Flow best practices you follow for governance and maintainability?",tip:"Name conventions (object_triggerType_description), one Flow per object/trigger, bulkification, error handling with custom exceptions, fault paths, and version documentation. Reference your automation work at Yelp keeping flows clean in a team environment."},
   ]},
-  notary:{label:"Notary / Signing",color:C.green,icon:"ð",
+  notary:{label:"Notary / Signing",color:C.green,icon:"Ã°ÂÂÂ",
     resources:[
       {label:"NNA Signing Agent Certification",url:"https://www.nationalnotary.org/notary-signing-agent"},
-      {label:"PA Dept. of State â Notary Portal",url:"https://www.notaries.pa.gov/"},
+      {label:"PA Dept. of State Ã¢ÂÂ Notary Portal",url:"https://www.notaries.pa.gov/"},
       {label:"PA RULONA Regulations (2026)",url:"https://www.pa.gov/agencies/dos/programs/notaries/notary-regulations-changes"},
       {label:"NNA Notary Bulletin",url:"https://www.nationalnotary.org/notary-bulletin"},
     ],
     questions:[
     {q:"What types of documents have you most frequently notarized?",tip:"Cover your range: affidavits, POA, loan packages, real estate closings, medical consent docs, wills/trusts, estate planning instruments. Organize by category (real estate, legal, medical) to show breadth."},
-    {q:"Walk me through your complete process for a loan signing appointment.",tip:"Confirm appointment + package details â print/organize in order â review documents before arrival â verify signer identity (2 forms of ID) â walk through each document section â execute notarizations â review for completeness â return package same day. Emphasize accuracy + professionalism."},
-    {q:"How do you handle a situation where a signer refuses or cannot complete the signing?",tip:"Don't pressure â document everything, contact the title company/lender immediately, note the refusal professionally in your journal. The notary's role is to witness, not influence. Know when to reschedule vs. when lender needs to be recontacted."},
+    {q:"Walk me through your complete process for a loan signing appointment.",tip:"Confirm appointment + package details Ã¢ÂÂ print/organize in order Ã¢ÂÂ review documents before arrival Ã¢ÂÂ verify signer identity (2 forms of ID) Ã¢ÂÂ walk through each document section Ã¢ÂÂ execute notarizations Ã¢ÂÂ review for completeness Ã¢ÂÂ return package same day. Emphasize accuracy + professionalism."},
+    {q:"How do you handle a situation where a signer refuses or cannot complete the signing?",tip:"Don't pressure Ã¢ÂÂ document everything, contact the title company/lender immediately, note the refusal professionally in your journal. The notary's role is to witness, not influence. Know when to reschedule vs. when lender needs to be recontacted."},
     {q:"What's your availability and geographic coverage area?",tip:"Be specific: Philadelphia proper, surrounding counties (Montgomery, Bucks, Delaware, Chester), South Jersey. Evening and weekend availability is a differentiator. Also mention RON capability for remote sessions."},
-    {q:"Are you NNA certified and do you carry E&O insurance? What coverage level?",tip:"NNA Certified Signing Agent + E&O insurance ($25kâ$100k) are required by most title companies. Mention any background check credentials on file. Coverage level signals professionalism."},
+    {q:"Are you NNA certified and do you carry E&O insurance? What coverage level?",tip:"NNA Certified Signing Agent + E&O insurance ($25kÃ¢ÂÂ$100k) are required by most title companies. Mention any background check credentials on file. Coverage level signals professionalism."},
     {q:"What are the key RULONA changes effective March 2026 that affect PA notaries?",tip:"CRITICAL current events question! Key changes: bond increases from $10k to $25k for new/renewing notaries; new 7-digit commission ID required on seal; journal must not contain SSN/DL/DOB of signers; new $5 fee for witnessing acts; stricter RON tech approval. Shows you stay current."},
     {q:"What's the difference between acknowledgment and jurat notarizations?",tip:"Acknowledgment = signer confirms the document is theirs (doesn't need to sign in your presence). Jurat = signer signs in your presence and takes an oath/affirmation about the document's truth. Most common: acknowledgment for real estate deeds; jurat for affidavits."},
-    {q:"How do you verify signer identity and what do you do if their ID is questionable?",tip:"Require government-issued photo ID with physical description and signature. If questionable: can use two credible witnesses who personally know the signer (each presenting their own ID). Never notarize if identity cannot be satisfactorily established â fraud prevention is core."},
+    {q:"How do you verify signer identity and what do you do if their ID is questionable?",tip:"Require government-issued photo ID with physical description and signature. If questionable: can use two credible witnesses who personally know the signer (each presenting their own ID). Never notarize if identity cannot be satisfactorily established Ã¢ÂÂ fraud prevention is core."},
   ]},
-  situational:{label:"Situational",color:C.amber,icon:"ð¡",
+  situational:{label:"Situational",color:C.amber,icon:"Ã°ÂÂÂ¡",
     resources:[
       {label:"Glassdoor SF Admin Interviews",url:"https://www.glassdoor.com/Interview/salesforce-administrator-interview-questions-SRCH_KO0,24.htm"},
       {label:"SF Trailhead: Admin Scenarios",url:"https://trailhead.salesforce.com/en/content/learn/modules/business_processes"},
       {label:"NNA Ethics for Signing Agents",url:"https://www.nationalnotary.org/knowledge-center/news-and-advice/notary-news/code-of-professional-responsibility"},
     ],
     questions:[
-    {q:"A sales rep reports their workflow automation 'just stopped working.' How do you triage?",tip:"Check Setup Audit Trail first â identify recent changes â debug in Flow Debug logs â verify active/inactive status and entry criteria. Communicate ETA to rep. Always check: 1) was the Flow modified? 2) was record criteria changed? 3) are there governor limits?"},
-    {q:"Leadership needs a pipeline health dashboard by region by end of business. What's your process?",tip:"Confirm report type â check existing reports â build custom joined/summary report by region â create dashboard components â add to executive dashboard â set auto-refresh â share with leadership. Communicate realistic ETA. Done in <2 hours for experienced admin."},
+    {q:"A sales rep reports their workflow automation 'just stopped working.' How do you triage?",tip:"Check Setup Audit Trail first Ã¢ÂÂ identify recent changes Ã¢ÂÂ debug in Flow Debug logs Ã¢ÂÂ verify active/inactive status and entry criteria. Communicate ETA to rep. Always check: 1) was the Flow modified? 2) was record criteria changed? 3) are there governor limits?"},
+    {q:"Leadership needs a pipeline health dashboard by region by end of business. What's your process?",tip:"Confirm report type Ã¢ÂÂ check existing reports Ã¢ÂÂ build custom joined/summary report by region Ã¢ÂÂ create dashboard components Ã¢ÂÂ add to executive dashboard Ã¢ÂÂ set auto-refresh Ã¢ÂÂ share with leadership. Communicate realistic ETA. Done in <2 hours for experienced admin."},
     {q:"You're onboarding 30 users from an acquired company into your Salesforce org. What's your plan?",tip:"Phase 1: audit user needs, map to existing profiles/roles. Phase 2: migrate their records with dedup. Phase 3: sandbox training with recorded walkthroughs. Phase 4: phased go-live (team by team) with hypercare support and feedback loops."},
-    {q:"A signer texts you 10 minutes before their appointment saying they can't make it.",tip:"Immediately contact the title company or scheduling platform. Reschedule within their acceptable window. Document the cancellation in your system. Follow up professionally â borrowers often reschedule. Log the outcome regardless."},
+    {q:"A signer texts you 10 minutes before their appointment saying they can't make it.",tip:"Immediately contact the title company or scheduling platform. Reschedule within their acceptable window. Document the cancellation in your system. Follow up professionally Ã¢ÂÂ borrowers often reschedule. Log the outcome regardless."},
     {q:"A stakeholder wants a custom object but you think a standard object with customization would work better. How do you handle it?",tip:"Present both options with pros/cons: custom object = more flexibility but maintenance overhead; standard object = better reporting, upgrades, and AppExchange compatibility. Ask about reporting needs, data volume, and integrations. Let business requirements drive, but document your recommendation."},
-    {q:"You discover a security gap â a group of users has more data access than they should. What do you do?",tip:"Audit the scope first (how many records, how sensitive). Inform your manager/security team. Tighten OWD or sharing rules in sandbox first. Test impact. Deploy with minimal disruption. Document the fix. Create a review schedule. Never remediate silently â always escalate data security issues."},
-    {q:"You're mid-signing when you realize the signer's name on the ID doesn't exactly match the documents. What do you do?",tip:"Minor discrepancy (nickname vs. legal name) â note both versions in journal, proceed if confident of identity. Significant discrepancy â stop the signing, contact the title company, and let them advise. Never guess. Your commission depends on accurate identity verification."},
+    {q:"You discover a security gap Ã¢ÂÂ a group of users has more data access than they should. What do you do?",tip:"Audit the scope first (how many records, how sensitive). Inform your manager/security team. Tighten OWD or sharing rules in sandbox first. Test impact. Deploy with minimal disruption. Document the fix. Create a review schedule. Never remediate silently Ã¢ÂÂ always escalate data security issues."},
+    {q:"You're mid-signing when you realize the signer's name on the ID doesn't exactly match the documents. What do you do?",tip:"Minor discrepancy (nickname vs. legal name) Ã¢ÂÂ note both versions in journal, proceed if confident of identity. Significant discrepancy Ã¢ÂÂ stop the signing, contact the title company, and let them advise. Never guess. Your commission depends on accurate identity verification."},
   ]},
 };
 
 
-/* âââ RESOURCES HUB COMPONENT âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ RESOURCES HUB COMPONENT Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 function ResourceCard({ item, type }) {
   const tagColors = {
-    "â ï¸ Must Read":"#B83232","Admin":"#2680D4","Release":"#C9A84C",
+    "Ã¢ÂÂ Ã¯Â¸Â Must Read":"#B83232","Admin":"#2680D4","Release":"#C9A84C",
     "Strategy":"#1E8F8F","Career":"#8B5CF6","Event":"#C87830",
     "News":"#2680D4","Fees":"#B83232","RON":"#1E8F8F",
     "Industry":"#28A068","Education":"#C9A84C","Resource":"#7A8FA6",
@@ -1409,7 +1409,7 @@ function ResourceCard({ item, type }) {
         {item.desc && <p style={{ fontSize:11.5, color:C.muted, margin:0, lineHeight:1.55,
           fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>{item.desc}</p>}
         <div style={{ marginTop:8, fontSize:10.5, color:tc, fontFamily:"'Outfit',sans-serif",
-          fontWeight:600 }}>Read more â</div>
+          fontWeight:600 }}>Read more Ã¢ÂÂ</div>
       </div>
     </a>
   );
@@ -1418,10 +1418,10 @@ function ResourceCard({ item, type }) {
 function ResourcesHub() {
   const [tab, setTab] = useState("sf_news");
   const tabs = [
-    { key:"sf_news",      label:"â¡ SF News",          data:SF_NEWS,        color:C.blue  },
-    { key:"notary_news",  label:"ð Notary News",      data:NOTARY_NEWS,    color:C.green },
-    { key:"sf_resources", label:"âï¸ SF Resources",     data:SF_RESOURCES,   color:C.gold  },
-    { key:"notary_res",   label:"ð Notary Resources",  data:NOTARY_RESOURCES, color:C.teal },
+    { key:"sf_news",      label:"Ã¢ÂÂ¡ SF News",          data:SF_NEWS,        color:C.blue  },
+    { key:"notary_news",  label:"Ã°ÂÂÂ Notary News",      data:NOTARY_NEWS,    color:C.green },
+    { key:"sf_resources", label:"Ã¢ÂÂÃ¯Â¸Â SF Resources",     data:SF_RESOURCES,   color:C.gold  },
+    { key:"notary_res",   label:"Ã°ÂÂÂ Notary Resources",  data:NOTARY_RESOURCES, color:C.teal },
   ];
   const active = tabs.find(t=>t.key===tab);
 
@@ -1441,18 +1441,18 @@ function ResourcesHub() {
       <div style={{ background:"rgba(184,50,50,0.12)", border:"1px solid #B8323244",
         borderRadius:12, padding:"14px 18px", marginBottom:20,
         display:"flex", alignItems:"center", gap:12 }}>
-        <span style={{ fontSize:18 }}>â ï¸</span>
+        <span style={{ fontSize:18 }}>Ã¢ÂÂ Ã¯Â¸Â</span>
         <div>
           <div style={{ fontSize:12, fontWeight:700, color:"#ff7b72",
             fontFamily:"'Outfit',sans-serif", marginBottom:2 }}>
-            PA Notary Alert â New RULONA Regulations Effective March 28, 2026
+            PA Notary Alert Ã¢ÂÂ New RULONA Regulations Effective March 28, 2026
           </div>
           <div style={{ fontSize:11, color:C.offwhite, fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>
-            Bond increases to $25,000 for new/renewing notaries Â· New seal format required Â· Updated journal privacy rules Â· New $5 witnessing fee
+            Bond increases to $25,000 for new/renewing notaries ÃÂ· New seal format required ÃÂ· Updated journal privacy rules ÃÂ· New $5 witnessing fee
             <a href="https://www.pa.gov/agencies/dos/programs/notaries/notary-regulations-changes"
               target="_blank" rel="noreferrer"
               style={{ color:"#ff7b72", marginLeft:8, fontWeight:600, textDecoration:"none" }}>
-              Read official changes â
+              Read official changes Ã¢ÂÂ
             </a>
           </div>
         </div>
@@ -1503,13 +1503,13 @@ function QuestionItem({ item, idx, color }) {
             <div style={{ marginTop:12, padding:"12px 14px", background:color+"0D",
               borderRadius:9, border:`1px solid ${color}22` }}>
               <div style={{ fontSize:9.5, fontWeight:700, color, textTransform:"uppercase",
-                letterSpacing:"0.12em", marginBottom:7, fontFamily:"'Outfit',sans-serif" }}>ð¡ Coaching Tip</div>
+                letterSpacing:"0.12em", marginBottom:7, fontFamily:"'Outfit',sans-serif" }}>Ã°ÂÂÂ¡ Coaching Tip</div>
               <p style={{ fontSize:12.5, color:C.offwhite, margin:0, lineHeight:1.65,
                 fontFamily:"'Outfit',sans-serif", fontWeight:300 }}>{item.tip}</p>
             </div>
           )}
         </div>
-        <div style={{ color:C.muted, fontSize:13, flexShrink:0, marginTop:2 }}>{open?"â²":"â¼"}</div>
+        <div style={{ color:C.muted, fontSize:13, flexShrink:0, marginTop:2 }}>{open?"Ã¢ÂÂ²":"Ã¢ÂÂ¼"}</div>
       </div>
     </div>
   );
@@ -1554,7 +1554,7 @@ function InterviewPrep() {
           }}>{s.icon} {s.label} ({s.questions.length})</button>
         ))}
         <div style={{ marginLeft:"auto", display:"flex", gap:6 }}>
-          {[{m:"flashcard",l:"ð"},{m:"list",l:"ð"}].map(({m,l}) => (
+          {[{m:"flashcard",l:"Ã°ÂÂÂ"},{m:"list",l:"Ã°ÂÂÂ"}].map(({m,l}) => (
             <button key={m} onClick={() => setMode(m)} style={{
               background:mode===m?C.goldDim:"transparent",
               color:mode===m?C.goldBright:C.muted,
@@ -1573,7 +1573,7 @@ function InterviewPrep() {
           gap:8, flexWrap:"wrap" }}>
           <span style={{ fontSize:10, fontWeight:700, color:C.gold, letterSpacing:"0.1em",
             textTransform:"uppercase", fontFamily:"'Outfit',sans-serif", marginRight:4 }}>
-            ð Study Resources:
+            Ã°ÂÂÂ Study Resources:
           </span>
           {set.resources.map((r,i) => (
             <a key={i} href={r.url} target="_blank" rel="noreferrer" style={{
@@ -1582,7 +1582,7 @@ function InterviewPrep() {
               textDecoration:"none", fontWeight:600, fontFamily:"'Outfit',sans-serif",
               display:"inline-flex", alignItems:"center", gap:4,
             }}>
-              {r.label} â
+              {r.label} Ã¢ÂÂ
             </a>
           ))}
         </div>
@@ -1615,7 +1615,7 @@ function InterviewPrep() {
             <div style={{ fontSize:10, fontWeight:700, color:set.color,
               letterSpacing:"0.16em", textTransform:"uppercase", marginBottom:14,
               fontFamily:"'Outfit',sans-serif" }}>
-              {flipped?"ð¡ Coaching Tip":`${set.icon}  Question ${idx+1} of ${total}`}
+              {flipped?"Ã°ÂÂÂ¡ Coaching Tip":`${set.icon}  Question ${idx+1} of ${total}`}
             </div>
             <p style={{
               fontSize:flipped?(isMobile?13:14):(isMobile?16:19),
@@ -1625,15 +1625,15 @@ function InterviewPrep() {
               {flipped?q.tip:q.q}
             </p>
             {!flipped && <div style={{ marginTop:18, fontSize:11, color:C.muted,
-              fontFamily:"'Outfit',sans-serif" }}>Tap to reveal coaching tip â</div>}
+              fontFamily:"'Outfit',sans-serif" }}>Tap to reveal coaching tip Ã¢ÂÂ</div>}
           </div>
 
           <div style={{ display:"flex", gap:10, justifyContent:"center" }}>
-            <Btn variant="ghost" onClick={prev} style={{ flex:isMobile?1:undefined }}>â Prev</Btn>
+            <Btn variant="ghost" onClick={prev} style={{ flex:isMobile?1:undefined }}>Ã¢ÂÂ Prev</Btn>
             <Btn variant="outline" onClick={() => setFlipped(f=>!f)} style={{ flex:isMobile?1:undefined }}>
               {flipped?"Question":"Tip"}
             </Btn>
-            <Btn onClick={next} style={{ flex:isMobile?1:undefined }}>Next â</Btn>
+            <Btn onClick={next} style={{ flex:isMobile?1:undefined }}>Next Ã¢ÂÂ</Btn>
           </div>
         </div>
       ) : (
@@ -1648,7 +1648,7 @@ function InterviewPrep() {
 }
 
 
-/* âââ ROOT APP âââ */
+/* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ ROOT APP Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 const ROTATION_KEY = "jamille_rotation_v1";
 const APPS_KEY     = "jamille_apps_v2";
 const PROGRAM_DAYS = 90;
@@ -1768,7 +1768,7 @@ export default function App() {
             background:C.surface, border:`1px solid ${C.border}`,
             borderRadius:10, padding:"9px 12px", cursor:"pointer",
             color:C.gold, fontSize:18, lineHeight:1,
-          }}>â°</button>
+          }}>Ã¢ÂÂ°</button>
         )}
 
         {/* Tablet drawer */}
@@ -1796,7 +1796,7 @@ export default function App() {
               style={{ color:C.gold, fontSize:11, textDecoration:"none", fontWeight:600,
                 fontFamily:"'Outfit',sans-serif", background:C.goldDim,
                 border:`1px solid ${C.border}`, padding:"5px 9px", borderRadius:6 }}>
-              in â
+              in Ã¢ÂÂ
             </a>
           </div>
         )}
