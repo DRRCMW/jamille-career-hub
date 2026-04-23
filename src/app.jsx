@@ -213,7 +213,7 @@ const ROTATION_KEY   = "jamille_rotation_v1";
 const APPS_KEY       = "jamille_apps_v2";
 const PROGRAM_DAYS   = 90;
 const REFRESH_DAYS   = 7;
-const JOBS_PER_PAGE  = 15;
+const JOBS_PER_PAGE  = 8;
 
 function getTodayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -1034,15 +1034,15 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
           }}>{f.label} ({jobs.length})</button>
         ))}
         <a href={filter==="salesforce"
-          ?"https://www.indeed.com/q-part-time-salesforce-administrator-jobs.html"
-          :"https://www.nationalnotary.org/notary-signing-agent"}
+          ?"https://www.indeed.com/jobs?q=salesforce+administrator&l=Philadelphia%2C+PA&fromage=14"
+          :"https://www.indeed.com/jobs?q=notary+signing+agent&l=Philadelphia%2C+PA&fromage=14"}
           target="_blank" rel="noreferrer"
           style={{ marginLeft:"auto", display:"inline-flex", alignItems:"center", gap:5,
             background:"transparent", border:`1px solid ${C.border}`,
             borderRadius:9, padding:"8px 14px", color:C.gold, fontSize:11.5,
             fontWeight:600, textDecoration:"none", fontFamily:"'Outfit',sans-serif",
             whiteSpace:"nowrap" }}>
-          More ↗
+          Browse Live ↗
         </a>
       </div>
 
@@ -1093,11 +1093,20 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
               </p>
 
               <div style={{ display:"flex", gap:7, marginTop:"auto" }}>
+                <a href={job.applyUrl} target="_blank" rel="noreferrer" style={{ flex:1, textDecoration:"none" }}
+                  onClick={e=>e.stopPropagation()}>
+                  <button style={{
+                    width:"100%", background:`linear-gradient(135deg,${C.gold},${C.goldBright})`,
+                    border:"none", borderRadius:7, color:"#060D16", fontSize:11, fontWeight:700,
+                    cursor:"pointer", padding:"9px 0", fontFamily:"'Outfit',sans-serif" }}>
+                    Apply Now ↗
+                  </button>
+                </a>
                 <button onClick={e=>{e.stopPropagation();setSelected(job);}} style={{
-                  flex:1, background:C.goldDim, border:`1px solid ${C.gold}33`,
-                  borderRadius:7, color:C.gold, fontSize:11, fontWeight:600,
-                  cursor:"pointer", padding:"8px 0", fontFamily:"'Outfit',sans-serif" }}>
-                  View & Apply ↗
+                  background:"transparent", border:`1px solid ${C.border}`,
+                  borderRadius:7, color:C.mutedMid, fontSize:11, fontWeight:600,
+                  cursor:"pointer", padding:"8px 10px", fontFamily:"'Outfit',sans-serif" }}>
+                  Details
                 </button>
                 <button onClick={e=>{e.stopPropagation();onSaveJob(job);}}
                   disabled={isSaved} style={{
@@ -1105,7 +1114,7 @@ function JobBoard({ weekJobs, rotation, onSaveJob, savedIds, onRefresh }) {
                   border:`1px solid ${isSaved?C.green+"44":C.border}`,
                   borderRadius:7, color:isSaved?C.green:C.mutedMid,
                   fontSize:12, fontWeight:600, cursor:isSaved?"default":"pointer",
-                  padding:"8px 12px", fontFamily:"'Outfit',sans-serif" }}>
+                  padding:"8px 10px", fontFamily:"'Outfit',sans-serif" }}>
                   {isSaved?"✓":"＋"}
                 </button>
               </div>
@@ -1163,14 +1172,20 @@ function AppTracker({ applications, setApplications }) {
 
   const addApp = () => {
     if (!form.company.trim()||!form.title.trim()) return;
-    setApplications({...applications, applied:[...applications.applied,{...form,id:Date.now().toString()}]});
+    setApplications({...blankBoard(), ...applications, applied:[...(applications?.applied||[]),{...form,id:Date.now().toString()}]});
     setForm({ company:"", title:"", location:"", salary:"",
       type:"Salesforce Admin", date:new Date().toISOString().slice(0,10), notes:"" });
     setShowForm(false);
   };
-  const moveApp=(app,from,to)=>setApplications({...applications,
-    [from]:applications[from].filter(a=>a.id!==app.id),[to]:[...applications[to],app]});
-  const removeApp=(app,s)=>setApplications({...applications,[s]:applications[s].filter(a=>a.id!==app.id)});
+  // Null-safe applications getter
+  const getCol = (key) => (applications && Array.isArray(applications[key])) ? applications[key] : [];
+  const moveApp=(app,from,to)=>setApplications({
+    ...blankBoard(), ...applications,
+    [from]:getCol(from).filter(a=>a.id!==app.id),
+    [to]:[...getCol(to),app]});
+  const removeApp=(app,s)=>setApplications({
+    ...blankBoard(), ...applications,
+    [s]:getCol(s).filter(a=>a.id!==app.id)});
 
   const inp=(label,key,type="text",opts=null)=>(
     <div>
@@ -1245,12 +1260,12 @@ function AppTracker({ applications, setApplications }) {
                   fontFamily:"'Outfit',sans-serif" }}>{col.label}</div>
                 <div style={{ background:col.color+"22", color:col.color, borderRadius:"50%",
                   width:20, height:20, display:"flex", alignItems:"center", justifyContent:"center",
-                  fontSize:10, fontWeight:800 }}>{applications[col.key]?.length||0}</div>
+                  fontSize:10, fontWeight:800 }}>{getCol(col.key).length}</div>
               </div>
-              {(applications[col.key]||[]).map(app => (
+              {getCol(col.key).map(app => (
                 <KanbanCard key={app.id} app={app} colKey={col.key} onMove={moveApp} onRemove={removeApp} />
               ))}
-              {(applications[col.key]?.length||0)===0 && (
+              {getCol(col.key).length===0 && (
                 <div style={{ textAlign:"center", padding:"24px 0", color:C.muted,
                   fontSize:11, border:`1px dashed ${col.color}18`, borderRadius:9,
                   fontFamily:"'Outfit',sans-serif" }}>Empty</div>
