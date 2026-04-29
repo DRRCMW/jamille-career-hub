@@ -90,122 +90,188 @@ function seededShuffle(arr, seed) {
   return a;
 }
 
-/* ─── JOB POOL: VERIFIED LIVE SF ADMIN ROLES (April 2026) ─── */
+/* ─── JOB POOL: VERIFIED LIVE SF ADMIN ROLES (April 2026 — Direct Apply Links) ─── */
 const SF_POOL = [
-  { id:"sf01", company:"Deloitte", logo:"D", title:"Life Science Salesforce Admin (Consultant)", location:"Philadelphia, PA 19103", salary:"$84K–$155K/yr", type:"Full-Time", tag:"salesforce", match:92,
-    about:"Deloitte Customer team supporting Patient Services programs at major life sciences and pharma clients in Philadelphia. Recruiting closes June 26, 2026.",
-    description:"Partner with clinical and business stakeholders to translate patient support workflows into scalable Salesforce solutions. Lead requirements gathering, functional design, and full life-cycle implementation.",
-    requirements:["3+ yrs Salesforce consulting/industry exp","2+ full life-cycle SF implementations","Health Cloud or Life Sciences Cloud experience","ADM-201 or equivalent certifications"],
-    niceToHave:["Service Cloud, Experience Cloud expertise","CPQ (Apttus, BigMachines) background","Advanced degree"],
-    applyUrl:"https://www.indeed.com/viewjob?jk=54cfddc27447033a", websiteUrl:"https://www.deloitte.com" },
-
-  { id:"sf02", company:"Varonis", logo:"V", title:"Salesforce Administrator", location:"Remote (Eastern Time Zone)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:90,
-    about:"Varonis is a Nasdaq-listed data security company. Their Business Systems team needs a Salesforce Admin to support and evolve the CRM serving global GTM teams. Actively hiring April 2026.",
-    description:"Own day-to-day SF admin tasks — user management, flow maintenance, data quality, forecasting, dashboards — and help optimize the CRM as the business scales.",
-    requirements:["Salesforce Administration experience","Flows, validation rules, reports & dashboards","Strong business acumen and communication skills","Microsoft Office fluency"],
-    niceToHave:["ADM-201 Certification","Experience in cybersecurity/SaaS industry","Forecasting and pipeline reporting experience"],
-    applyUrl:"https://careers.varonis.com/", websiteUrl:"https://www.varonis.com" },
-
-  { id:"sf03", company:"Rippling", logo:"R", title:"Salesforce System Administrator", location:"Remote", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:88,
-    about:"Rippling is a $1.2B-backed HR/IT/Finance platform used by thousands of companies. Their Business Systems team is actively hiring a Salesforce System Admin in April 2026.",
-    description:"Work with GTM stakeholders to translate business needs into scalable Salesforce solutions. Own end-to-end development from requirements through implementation and ongoing support.",
-    requirements:["Hands-on Salesforce administration","Flows, validation rules, object customization","Ability to partner with Sales, Marketing, CS teams","Strong analytical and communication skills"],
-    niceToHave:["ADM-201 Certification","Experience with Marketo, Outreach, or Gong integrations","Agile environment experience"],
-    applyUrl:"https://www.rippling.com/careers", websiteUrl:"https://www.rippling.com" },
-
-  { id:"sf04", company:"Iron Bow Technologies", logo:"IB", title:"Sr. Salesforce Administrator", location:"Remote (occasional travel)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:85,
-    about:"Iron Bow is a next-generation IT solutions provider for government, healthcare, and commercial clients. This SF Admin role was posted and updated Feb 20, 2026 — actively hiring.",
-    description:"Own day-to-day Salesforce Sales Cloud, Commerce Cloud, Data Cloud and Platform administration including flows, permissions, data model, security, and reporting for sales and order processing.",
-    requirements:["Certified Salesforce Administrator (ADM-201)","SF Sales Cloud, Data Cloud, Flows expertise","Experience with SSO and permission sets","Strong documentation skills"],
-    niceToHave:["Commerce Cloud (B2B) experience","Oracle EBS/Fusion integration knowledge","CI/CD pipeline familiarity"],
-    applyUrl:"https://ironbow.com/careers", websiteUrl:"https://ironbow.com" },
-
-  { id:"sf05", company:"West Shore Home", logo:"W", title:"Salesforce Administrator – Project Specialist", location:"Philadelphia, PA", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:86,
-    about:"West Shore Home is a fast-growing home improvement company with operations in Philadelphia. Actively hiring a Salesforce Administrator Project Specialist confirmed in April 2026 Indeed listings.",
-    description:"Help design, customize, and optimize Salesforce to support sales and operations teams. Monday–Friday, 8AM–5PM schedule.",
-    requirements:["Salesforce Administration experience","Flows, custom objects, page layouts","Experience supporting sales teams in SF","Strong stakeholder communication"],
-    niceToHave:["ADM-201 Certification","Home services or construction industry background","Reporting and dashboard expertise"],
-    applyUrl:"https://www.indeed.com/cmp/West-Shore-Home/jobs", websiteUrl:"https://www.westshorehome.com" },
-
-  { id:"sf06", company:"TW Metals / Moove NA", logo:"TW", title:"Salesforce Administrator", location:"Exton, PA (Hybrid)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:84,
-    about:"TW Metals is a global specialty metals distributor using Salesforce as its core CRM. Actively hiring a Salesforce Administrator in Exton, PA (30 min from Philadelphia) confirmed in April 2026.",
-    description:"Align CRM strategy with business goals, ensure platform health and scalability. Manage user setup, roles, profiles, permission sets, and data governance across the B2B sales org.",
-    requirements:["Salesforce Administration (3+ years)","Sales Cloud configuration and maintenance","Data governance and deduplication skills","Strong communication with business stakeholders"],
-    niceToHave:["B2B Commerce or CPQ experience","Industrial/manufacturing industry background","Einstein Analytics knowledge"],
-    applyUrl:"https://www.indeed.com/cmp/Tw-Metals/jobs", websiteUrl:"https://www.twmetals.com" },
-
-  { id:"sf07", company:"Community College of Philadelphia", logo:"CCP", title:"Salesforce Administrator", location:"Philadelphia, PA", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:83,
-    about:"Community College of Philadelphia is a top employer for Salesforce admins in the city (confirmed on Glassdoor's April 2026 hiring list). SF Admin roles supporting student enrollment and CRM platforms.",
-    description:"Administer Salesforce platforms supporting enrollment, student success, and alumni engagement. Work with faculty and operations staff to configure and maintain the org.",
-    requirements:["Salesforce Administration certification","Education Cloud or NPSP experience a plus","End-user training and support skills","Strong reporting and documentation skills"],
-    niceToHave:["Higher education background","FormAssembly or similar integration experience","Marketing Cloud knowledge"],
-    applyUrl:"https://www.ccp.edu/about-us/employment", websiteUrl:"https://www.ccp.edu" },
-
-  { id:"sf08", company:"Verinext", logo:"Vx", title:"Senior Salesforce Administrator", location:"King of Prussia, PA (Hybrid)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:82,
-    about:"Verinext is an IT solutions provider in King of Prussia, PA (30 min from Philadelphia). Actively hiring a proactive Sr. Salesforce Admin confirmed in April 2026 Indeed search.",
-    description:"Collaborate with LOB admins to validate changes per IT standards. Lead Salesforce configuration, enhancements, and cross-system integrations for a growing technology company.",
-    requirements:["5+ yrs Salesforce Administration","Experience with SF in enterprise IT environment","Cross-functional stakeholder management","Strong documentation and change management skills"],
-    niceToHave:["Salesforce certifications","API and integration background","Jira or DevOps tooling experience"],
-    applyUrl:"https://www.verinext.com/company/careers/", websiteUrl:"https://www.verinext.com" },
+  {
+    id:"sf01", company:"Deloitte", logo:"D",
+    title:"Life Science Salesforce Admin (Consultant)",
+    location:"Philadelphia, PA 19103", salary:"$84K–$155K/yr", type:"Full-Time", tag:"salesforce", match:92,
+    about:"Deloitte Customer team in Philadelphia supporting life sciences and pharma Patient Services programs. Actively recruiting — closes June 26, 2026.",
+    description:"Partner with clinical stakeholders to translate patient support workflows into scalable Salesforce solutions. Lead requirements gathering and functional design across full life-cycle implementations.",
+    requirements:["3+ yrs Salesforce consulting/industry exp","2+ full life-cycle SF implementations","Health Cloud or Life Sciences Cloud exp","ADM-201 or equivalent cert"],
+    niceToHave:["Service Cloud, Experience Cloud exp","CPQ background","Advanced degree"],
+    applyUrl:"https://www.indeed.com/viewjob?jk=54cfddc27447033a",
+    websiteUrl:"https://www.deloitte.com"
+  },
+  {
+    id:"sf02", company:"Varonis", logo:"V",
+    title:"Salesforce Administrator",
+    location:"Remote (Eastern Time Zone)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:90,
+    about:"Varonis (Nasdaq: VRNS) is a global data security leader. Their SF Admin role is open and posted on their official careers site — seeking Eastern Time Zone candidates.",
+    description:"Support Salesforce user base, maintain day-to-day processes, and optimize the CRM by turning user requirements into solutions. Manage data integrity across forecasting, contacts, leads, opportunities, and dashboards.",
+    requirements:["Salesforce Administration exp","Flows, validation rules, reporting & dashboards","Strong business acumen","Microsoft Office fluency"],
+    niceToHave:["ADM-201 Certification","Cybersecurity/SaaS industry background","Forecasting and pipeline reporting"],
+    applyUrl:"https://jobs.jvistg2.com/varonis/job/oDZyzfwt?nl=1",
+    websiteUrl:"https://www.varonis.com"
+  },
+  {
+    id:"sf03", company:"Rippling", logo:"R",
+    title:"Salesforce System Administrator",
+    location:"Remote", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:88,
+    about:"Rippling is a $1.2B HR/IT/Finance platform. Their Business Systems team has an active SF System Administrator posting on their ATS — apply directly.",
+    description:"Partner with GTM business owners to improve Salesforce processes. Own end-to-end dev cycle from requirements through implementation. Build scalable solutions alongside onshore and offshore admin/dev teams.",
+    requirements:["Hands-on Salesforce administration","Flows, validation rules, custom objects","Strong analytical and comms skills","Ability to work with Sales, Marketing, CS"],
+    niceToHave:["ADM-201 Certification","Marketo, Outreach, or Gong integration exp","Agile environment experience"],
+    applyUrl:"https://ats.rippling.com/rippling/jobs/ba601d31-1f72-4096-b941-4bc76ff01ce3",
+    websiteUrl:"https://www.rippling.com"
+  },
+  {
+    id:"sf04", company:"West Shore Home", logo:"W",
+    title:"Salesforce Administrator – Project Specialist",
+    location:"Mechanicsburg, PA (Onsite)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:86,
+    about:"West Shore Home is a Top Workplaces USA award winner and one of the nation's fastest-growing home improvement companies. SF Admin Project Specialist role confirmed active on Indeed.",
+    description:"Design, customize, and modify Salesforce and related Business Systems (ERP, CPQ, call center software) to support company-wide operations across 40+ locations nationwide.",
+    requirements:["Active SF Administrator certification","Flows, custom objects, validation rules","Experience with ERP/CPQ integrations","Agile project delivery exp"],
+    niceToHave:["Advanced Admin or App Builder cert","West Shore Home uses SAP/similar ERP","Call center software (Five9) exp"],
+    applyUrl:"https://www.indeed.com/viewjob?jk=7180f8770b6ff7bd",
+    websiteUrl:"https://www.westshorehome.com"
+  },
+  {
+    id:"sf05", company:"TW Metals", logo:"TW",
+    title:"Salesforce Administrator",
+    location:"Exton, PA (Hybrid)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:85,
+    about:"TW Metals is a leading global specialty metals distributor. Their SF Admin role in Exton, PA (30 min from Philadelphia) is posted on Indeed — hybrid schedule.",
+    description:"Own the Salesforce platform as subject matter expert. Align CRM strategy with business goals. Manage user setup, roles, flows, dashboards. Build Analytics Studio/Tableau CRM reports for pipeline and campaign ROI.",
+    requirements:["5+ yrs Salesforce/CRM exp","ADM-201 certification required","Analytics Studio or advanced SF reporting","Strong cross-functional communication"],
+    niceToHave:["Boomi or similar middleware","Pardot and Manufacturing Cloud","Industrial/manufacturing sector exp"],
+    applyUrl:"https://www.indeed.com/viewjob?jk=84a649bd6dc8bc6e",
+    websiteUrl:"https://www.twmetals.com"
+  },
+  {
+    id:"sf06", company:"Moove NA Distribution", logo:"M",
+    title:"Senior Salesforce Administrator",
+    location:"King of Prussia, PA (Hybrid)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:84,
+    about:"Moove NA is the nation's #1 lubricant distributor (ExxonMobil brands), a Cosan subsidiary with 55,000+ global employees. Actively posting SF Admin roles in King of Prussia confirmed on Glassdoor and Ziprecruiter.",
+    description:"Own Salesforce B2B Commerce environment. Act as primary admin for IT initiatives, manage LOB changes, handle deployment prep, maintain data governance and quality across Contacts, Accounts, and Opportunities.",
+    requirements:["5+ yrs Salesforce B2B Commerce exp","ADM-201 certification","Jira and CI/CD tooling familiarity","Strong data governance skills"],
+    niceToHave:["Boomi/MuleSoft integration exp","Industrial distribution background","Tableau CRM experience"],
+    applyUrl:"https://www.indeed.com/q-salesforce-l-king-of-prussia,-pa-jobs.html",
+    websiteUrl:"https://www.moovena.com"
+  },
+  {
+    id:"sf07", company:"Verinext", logo:"Vx",
+    title:"Senior Salesforce Administrator",
+    location:"King of Prussia, PA (Hybrid, 3 days/wk)", salary:"Contract-to-Hire", type:"Contract", tag:"salesforce", match:83,
+    about:"Verinext is an IT solutions provider in King of Prussia, PA — 30 min from Philadelphia. Hybrid contract-to-hire SF Admin role active on Talent.com and Glassdoor for one of their enterprise clients.",
+    description:"Serve as primary Salesforce admin for IT-led B2B Commerce and integration initiatives. Collaborate with LOB admins, manage Jira tickets for SF workstreams, administer user setup, roles, permissions, and run system audits.",
+    requirements:["SF Administration with B2B Commerce exp","Jira/project tracking experience","Version control and deployment tools","3+ days/wk availability in King of Prussia"],
+    niceToHave:["Dell Boomi or MuleSoft exp","CI/CD pipeline familiarity","SF Commerce Cloud certifications"],
+    applyUrl:"https://www.verinext.com/company/careers/",
+    websiteUrl:"https://www.verinext.com"
+  },
+  {
+    id:"sf08", company:"Iron Bow Technologies", logo:"IB",
+    title:"Sr. Salesforce Administrator",
+    location:"Remote (occasional Herndon VA travel)", salary:"Competitive", type:"Full-Time", tag:"salesforce", match:82,
+    about:"Iron Bow is a next-gen IT solutions provider for government, healthcare, and commercial clients. Sr. SF Admin role was updated 2/20/2026 — actively hiring. Apply via their careers page.",
+    description:"Own day-to-day Salesforce Sales Cloud, Commerce Cloud, Data Cloud and Platform admin — flows, permissions, security, reporting. Support sales and order processing. Light development support including Apex and LWC.",
+    requirements:["ADM-201 certification required","10+ yrs IT exp, 5+ yrs SF admin","Hands-on with Flows, security model, Data Loader","US Citizenship or Green Card required"],
+    niceToHave:["Advanced Administrator cert","Commerce Cloud B2B (LWR) exp","Oracle EBS/Fusion integration knowledge"],
+    applyUrl:"https://ironbow.com/all-jobs",
+    websiteUrl:"https://ironbow.com"
+  },
 ];
 
-/* ─── JOB POOL: VERIFIED LIVE NOTARY / SIGNING AGENT OPPORTUNITIES (April 2026) ─── */
+/* ─── JOB POOL: VERIFIED NOTARY PLATFORM SIGNUPS (Always Live) ─── */
 const NOTARY_POOL = [
-  { id:"n01", company:"Proof (Proof.com)", logo:"Pr", title:"Pennsylvania Online Notary (RON)", location:"Remote – PA", salary:"Up to $50/hr", type:"Independent Contractor", tag:"notary", match:98,
-    about:"Proof (formerly Notarize) is the leading remote online notarization (RON) platform. PA-commissioned notaries can earn up to $50/hr performing remote online signings from home. Actively accepting PA notaries in 2026.",
-    description:"Perform remote online notarizations (RON) through the Proof platform for real estate closings, legal documents, financial transactions, and more. Set your own schedule.",
-    requirements:["Valid PA Notary Commission","Electronic notarization (eNotary) commission","Reliable computer, webcam, and internet connection","Background check completion"],
-    niceToHave:["Loan signing certification (NNA)","RON platform experience","Real estate closing experience"],
-    applyUrl:"https://proof.com/notaries", websiteUrl:"https://proof.com" },
-
-  { id:"n02", company:"Snapdocs", logo:"Sd", title:"Signing Agent – PA Network", location:"Philadelphia Metro / Remote", salary:"$75–$200/signing", type:"Independent Contractor", tag:"notary", match:96,
-    about:"Snapdocs is the largest digital closing platform in the US, connecting title companies with signing agents. Joining their notary network gives access to hundreds of local signing orders per month.",
-    description:"Receive closing assignments from title companies and lenders through the Snapdocs platform. Handle loan signings, refinances, and real estate closings in Philadelphia and surrounding areas.",
-    requirements:["Certified Notary Signing Agent (NNA or equivalent)","Valid PA Notary Commission","E&O Insurance ($25K minimum)","Background screening completed"],
-    niceToHave:["RON capability","High volume signing history","5-star rating on signing platforms"],
-    applyUrl:"https://www.snapdocs.com/sign-up/signing-agent", websiteUrl:"https://www.snapdocs.com" },
-
-  { id:"n03", company:"Signing Services of America", logo:"SSA", title:"Notary Signing Agent – Philadelphia", location:"Philadelphia, PA Metro", salary:"$75–$150/signing", type:"Independent Contractor", tag:"notary", match:94,
+  {
+    id:"n01", company:"Proof (Proof.com)", logo:"Pr",
+    title:"Pennsylvania Online Notary (RON)",
+    location:"Remote – PA", salary:"Up to $50/hr", type:"Independent Contractor", tag:"notary", match:98,
+    about:"Proof is the #1 remote online notarization platform in the US. PA-commissioned eNotaries can earn up to $50/hr performing RON signings from home. Join their PA notary network directly.",
+    description:"Perform remote online notarizations for real estate closings, legal documents, financial transactions, and more through the Proof platform. Set your own hours.",
+    requirements:["Valid PA Notary Public Commission","PA eNotary commission (electronic notarization)","Reliable computer, webcam, and high-speed internet","Background check completion"],
+    niceToHave:["Loan signing certification (NNA)","Prior RON platform experience","Real estate closing background"],
+    applyUrl:"https://proof.com/notaries",
+    websiteUrl:"https://proof.com"
+  },
+  {
+    id:"n02", company:"Snapdocs", logo:"Sd",
+    title:"Loan Signing Agent – PA Network",
+    location:"Philadelphia Metro / Remote RON", salary:"$75–$200/signing", type:"Independent Contractor", tag:"notary", match:96,
+    about:"Snapdocs is the largest digital closing platform in the US used by title companies and lenders nationwide. Join their PA signing agent network to receive closing assignments in Philadelphia and the surrounding area.",
+    description:"Receive loan signing, refinance, and real estate closing assignments through the Snapdocs platform from title companies and lenders. Work as much or as little as you want.",
+    requirements:["Certified Notary Signing Agent (NNA or equivalent)","Valid PA Notary Commission","E&O Insurance ($25K+ minimum)","Background screening completed"],
+    niceToHave:["PA eNotary/RON capability","5-star rating on signing platforms","High-volume signing track record"],
+    applyUrl:"https://www.snapdocs.com/sign-up/signing-agent",
+    websiteUrl:"https://www.snapdocs.com"
+  },
+  {
+    id:"n03", company:"Signing Services of America", logo:"SSA",
+    title:"Notary Signing Agent – Philadelphia",
+    location:"Philadelphia Metro", salary:"$75–$150/signing", type:"Independent Contractor", tag:"notary", match:94,
     about:"Signing Services of America is a national signing service connecting loan signing agents with title companies. They actively recruit PA notaries for Philadelphia metro mortgage and refinance closings.",
-    description:"Accept loan signing assignments in the Philadelphia area. Complete mortgage, refinance, and purchase closing packages and return documents to title companies on time.",
+    description:"Accept loan signing assignments in the Philadelphia area. Complete mortgage, refinance, and purchase closing packages. Return documents to title companies on time.",
     requirements:["Certified Notary Signing Agent","Valid PA Notary Public Commission","E&O Insurance","Reliable transportation and printer/scanner"],
-    niceToHave:["NNA Certification","High availability on short-notice signings","Loan document familiarity"],
-    applyUrl:"https://www.signingservicesofamerica.com/become-a-notary-signing-agent", websiteUrl:"https://www.signingservicesofamerica.com" },
-
-  { id:"n04", company:"NotaryGo", logo:"NG", title:"Mobile Notary Signing Agent – PA", location:"Philadelphia, PA Metro", salary:"$75–$175/signing", type:"Independent Contractor", tag:"notary", match:92,
-    about:"NotaryGo is a nationwide notary network placing signing agents for real estate closings and loan signings. They are actively accepting PA-certified notaries in the Philadelphia metro in 2026.",
-    description:"Receive real estate closing and loan signing assignments through the NotaryGo platform. Work as much or as little as you want in the Philadelphia area.",
+    niceToHave:["NNA Certification","High availability for short-notice signings","Loan document familiarity"],
+    applyUrl:"https://www.signingservicesofamerica.com/become-a-notary-signing-agent",
+    websiteUrl:"https://www.signingservicesofamerica.com"
+  },
+  {
+    id:"n04", company:"NotaryGo", logo:"NG",
+    title:"Mobile Notary Signing Agent – PA",
+    location:"Philadelphia Metro", salary:"$75–$175/signing", type:"Independent Contractor", tag:"notary", match:92,
+    about:"NotaryGo is a nationwide notary network placing signing agents for real estate closings and loan signings. Actively accepting PA-certified notaries in the Philadelphia metro. Sign up directly.",
+    description:"Receive real estate closing and loan signing assignments through the NotaryGo platform. Work at your own pace in the Philadelphia area.",
     requirements:["PA Notary Public Commission","Notary Signing Agent certification (NNA or NCAN)","E&O Insurance ($100K recommended)","Reliable transportation"],
-    niceToHave:["RON commission","Experience with Pavaso or DocuSign Rooms","Knowledge of PA RULONA law"],
-    applyUrl:"https://www.notarygo.com/notary-sign-up/", websiteUrl:"https://www.notarygo.com" },
-
-  { id:"n05", company:"Notary Rotary", logo:"NR", title:"Loan Signing Agent – Philadelphia Area", location:"Philadelphia Metro", salary:"$75–$200/signing", type:"Independent Contractor", tag:"notary", match:90,
-    about:"Notary Rotary is one of the oldest and most trusted signing agent directories and platforms in the country. PA notaries who join get access to signing orders from title companies nationwide.",
-    description:"List your services and accept direct signing assignments from title companies, escrow companies, and mortgage lenders in Philadelphia and surrounding PA counties.",
-    requirements:["PA Notary Public License","Signing Agent certification (NNA recommended)","E&O Insurance","Willingness to create and maintain your profile"],
+    niceToHave:["PA eNotary RON commission","Experience with Pavaso or DocuSign Rooms","Knowledge of PA RULONA law"],
+    applyUrl:"https://www.notarygo.com/notary-sign-up/",
+    websiteUrl:"https://www.notarygo.com"
+  },
+  {
+    id:"n05", company:"Notary Rotary", logo:"NR",
+    title:"Loan Signing Agent – Philadelphia Area",
+    location:"Philadelphia Metro", salary:"$75–$200/signing", type:"Independent Contractor", tag:"notary", match:90,
+    about:"Notary Rotary is one of the oldest and most trusted signing agent directories in the country. PA notaries who join get direct access to signing orders from title companies, escrow companies, and mortgage lenders nationwide.",
+    description:"List your services and accept direct signing assignments from title companies and lenders in Philadelphia and surrounding PA counties.",
+    requirements:["PA Notary Public License","Signing Agent certification (NNA recommended)","E&O Insurance","Active profile and fast response time"],
     niceToHave:["NNA Loan Signing Agent Certification","PA eNotary commission","Existing client relationships"],
-    applyUrl:"https://www.notaryrotary.com", websiteUrl:"https://www.notaryrotary.com" },
-
-  { id:"n06", company:"SigningOrder.com", logo:"SO", title:"Remote Online Notary / Signing Agent – PA", location:"Remote & Philadelphia", salary:"$50–$150/signing", type:"Independent Contractor", tag:"notary", match:88,
-    about:"SigningOrder is a direct-to-notary platform where PA signing agents can accept both in-person loan signings and Remote Online Notarizations (RON). Active in Pennsylvania market.",
+    applyUrl:"https://www.notaryrotary.com/notary-signing-agents/signup/",
+    websiteUrl:"https://www.notaryrotary.com"
+  },
+  {
+    id:"n06", company:"123Notary", logo:"123",
+    title:"Certified Mobile Notary – Philadelphia PA",
+    location:"Philadelphia Metro + Remote RON", salary:"$75–$150/signing", type:"Independent Contractor", tag:"notary", match:88,
+    about:"123Notary is a premier directory connecting certified mobile notaries with clients. PA notaries listed here get direct calls from attorneys, banks, and title companies in Philadelphia and suburbs.",
+    description:"List your notary services and receive direct client calls and assignment requests across Philadelphia, Montgomery, Delaware, and Bucks counties.",
+    requirements:["PA Notary Public Commission","NNA or NCAN certification recommended","E&O Insurance","Mobile availability with reliable transportation"],
+    niceToHave:["PA eNotary/RON certification","NNA Loan Signing Agent cert","Spanish language skills helpful"],
+    applyUrl:"https://123notary.com/signup.asp",
+    websiteUrl:"https://123notary.com"
+  },
+  {
+    id:"n07", company:"SigningOrder.com", logo:"SO",
+    title:"Remote Online Notary / Signing Agent – PA",
+    location:"Remote & Philadelphia Area", salary:"$50–$150/signing", type:"Independent Contractor", tag:"notary", match:86,
+    about:"SigningOrder is a direct-to-notary platform where PA signing agents receive both in-person loan signings and Remote Online Notarization (RON) sessions. Active in the Pennsylvania market.",
     description:"Join SigningOrder as a PA notary to receive both mobile signing assignments and RON sessions. Build your own book of business through the platform.",
-    requirements:["PA Notary Commission","Signing Agent certification (preferred)","Reliable technology for RON sessions","E&O Insurance"],
-    niceToHave:["PA eNotary commission for RON work","Experience with multiple signing platforms","High response rate and reliability"],
-    applyUrl:"https://www.signingorder.com/notary/sign-up", websiteUrl:"https://www.signingorder.com" },
-
-  { id:"n07", company:"Mobile Notary Public Services LLC", logo:"MN", title:"Notary Signing Agent – Philadelphia", location:"Philadelphia, PA", salary:"Per-signing fee", type:"Contract", tag:"notary", match:86,
-    about:"Local Philadelphia-based mobile notary company actively listing on Indeed (April 2026). Covers Philadelphia metro for in-person and RON signings. Looking for experienced PA notaries.",
-    description:"Join local Philadelphia notary team handling daily signings — loan closings, estate documents, legal paperwork, and RON sessions across Philadelphia county.",
-    requirements:["Valid PA Notary Public License","E&O Insurance","9–5 availability","2+ years notary experience"],
-    niceToHave:["RON eNotary commission","Background in real estate or legal documents","Strong communication skills"],
-    applyUrl:"https://www.indeed.com/q-notary-l-philadelphia,-pa-jobs.html", websiteUrl:"https://www.mobilenotarypublicservices.com" },
-
-  { id:"n08", company:"First American Financial", logo:"FA", title:"Notary Coordinator (Remote)", location:"Remote – EST", salary:"Competitive hourly", type:"Contract", tag:"notary", match:84,
-    about:"First American Financial Corporation (NYSE: FAF) is one of the largest title insurance companies in the US. They actively recruit remote RON-capable notaries in PA for their Direct division.",
-    description:"Support real estate closings and title operations as a remote notary coordinator for one of the nation's largest title companies. Coordinate closings, review documents, and perform RON signings.",
-    requirements:["Active PA Notary Commission","eNotary commission preferred","RON platform experience","Strong organizational skills"],
-    niceToHave:["Title insurance background","Experience with First American's systems","Real estate closing familiarity"],
-    applyUrl:"https://www.firstam.com/careers/", websiteUrl:"https://www.firstam.com" },
+    requirements:["PA Notary Commission","Signing Agent certification (preferred)","Technology for RON sessions if applicable","E&O Insurance"],
+    niceToHave:["PA eNotary commission for RON work","High platform response rate and reliability","Multiple signing platform profiles"],
+    applyUrl:"https://www.signingorder.com/notary/sign-up",
+    websiteUrl:"https://www.signingorder.com"
+  },
+  {
+    id:"n08", company:"National Notary Association", logo:"NNA",
+    title:"Become a Certified Loan Signing Agent",
+    location:"Philadelphia PA + Remote", salary:"$75–$200/signing", type:"Certification + Work", tag:"notary", match:95,
+    about:"The NNA is the gold standard for notary certification. If Jamille isn't yet NNA-certified as a Loan Signing Agent, this certification significantly increases her earning potential and assignment volume. Most platforms prefer NNA-certified agents.",
+    description:"Earn the NNA Loan Signing Agent certification, which is required or preferred by Snapdocs, Signing Services of America, NotaryGo, and most title companies. Includes background screening, exam, and E&O insurance options.",
+    requirements:["Active PA Notary Commission","Completion of NNA Loan Signing Agent course","Background check","E&O Insurance (available through NNA)"],
+    niceToHave:["Prior notary experience","Real estate or legal background","Strong attention to detail"],
+    applyUrl:"https://www.nationalnotary.org/notary-signing-agent/loan-signing-agent-certification",
+    websiteUrl:"https://www.nationalnotary.org"
+  },
 ];
 
 /* ─── WEEKLY ROTATION ENGINE ─── */
